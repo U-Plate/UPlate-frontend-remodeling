@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#DCEDFF" />
+    <title>Unsubscribe · UPlate</title>
+    <meta name="description" content="Unsubscribe from UPlate emails." />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href="https://u-plate.com/unsubscribe" />
+    <link rel="shortcut icon" href="./assets/logo/logo.png" type="image/x-icon" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" />
+
+    <style>
+        :root {
+            color-scheme: light;
+            --bg: #DCEDFF;
+            --bg-grad: radial-gradient(120% 80% at 50% -10%, #ffffff 0%, #DCEDFF 55%, #c4dcf6 100%);
+            --surface: #ffffff;
+            --surface-soft: #f3f8ff;
+            --surface-sunken: #eaf2fc;
+            --accent: #94B0DA;
+            --accent-strong: #6f92c5;
+            --accent-soft: rgba(148, 176, 218, 0.14);
+            --accent-line: rgba(148, 176, 218, 0.32);
+            --ink: #14213d;
+            --ink-soft: #3b4a6b;
+            --ink-muted: #6f7e9c;
+            --danger: #c0392b;
+            --success: #2f855a;
+            --shadow-sm: 0 1px 2px rgba(20, 33, 61, 0.06);
+            --shadow-md: 0 12px 32px -12px rgba(31, 61, 110, 0.22);
+            --shadow-lg: 0 40px 80px -40px rgba(31, 61, 110, 0.45);
+            --radius-sm: 10px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-display: "Fraunces", "Georgia", ui-serif, serif;
+            font-family: var(--font-sans);
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body { margin: 0; padding: 0; }
+
+        html { min-height: 100%; background: var(--bg); }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg-grad);
+            background-attachment: fixed;
+            color: var(--ink);
+            font-size: 16px;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px 18px;
+        }
+
+        button, a, input { -webkit-tap-highlight-color: transparent; }
+        a { color: inherit; }
+
+        .shell {
+            width: 100%;
+            max-width: 440px;
+            margin: 0 auto;
+        }
+
+        /* ============ Card surface ============ */
+        .card {
+            position: relative;
+            width: 100%;
+            padding: 36px 32px 28px;
+            background: var(--surface);
+            border: 1px solid rgba(148, 176, 218, 0.35);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            isolation: isolate;
+            text-align: center;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(80% 50% at 50% 0%, rgba(148, 176, 218, 0.18), transparent 70%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* ============ Brand header ============ */
+        .brand-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .brand-mark {
+            display: grid;
+            place-items: center;
+            flex: 0 0 auto;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            background-image: url("https://i.postimg.cc/MGw9xFRg/UPlate(1).png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            box-shadow: inset 0 0 0 1px rgba(148, 176, 218, 0.4), var(--shadow-sm);
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+            text-align: left;
+        }
+
+        .brand-name {
+            margin: 0;
+            color: var(--ink);
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .brand-line {
+            margin: 4px 0 0;
+            color: var(--ink-muted);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        /* ============ Heading block ============ */
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            margin: 28px 0 0;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent-strong);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .title {
+            margin: 14px 0 0;
+            color: var(--ink);
+            font-family: var(--font-display);
+            font-size: clamp(28px, 7vw, 34px);
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .lede {
+            margin: 10px auto 0;
+            max-width: 34ch;
+            color: var(--ink-soft);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        /* ============ Form ============ */
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 24px;
+            text-align: left;
+        }
+
+        .field-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: var(--ink-soft);
+            margin-left: 2px;
+        }
+
+        .input {
+            width: 100%;
+            min-height: 56px;
+            padding: 0 18px;
+            background: var(--surface-soft);
+            border: 1px solid var(--accent-line);
+            border-radius: var(--radius-md);
+            color: var(--ink);
+            font-family: var(--font-sans);
+            font-size: 15px;
+            font-weight: 500;
+            box-shadow: var(--shadow-sm);
+            transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+        }
+
+        .input::placeholder { color: var(--ink-muted); }
+
+        .input:hover {
+            border-color: var(--accent);
+            background: var(--surface);
+        }
+
+        .input:focus {
+            outline: none;
+            border-color: var(--accent-strong);
+            background: var(--surface);
+            box-shadow: 0 0 0 3px var(--accent-soft);
+        }
+
+        .submit {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            min-height: 56px;
+            margin-top: 4px;
+            padding: 0 18px;
+            border: none;
+            border-radius: var(--radius-md);
+            background: var(--ink);
+            color: #ffffff;
+            font-family: var(--font-sans);
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            cursor: pointer;
+            box-shadow: 0 10px 24px -10px rgba(20, 33, 61, 0.55);
+            transition: transform 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .submit:hover:not(:disabled) {
+            background: #0d1730;
+            transform: translateY(-1px);
+            box-shadow: 0 14px 30px -10px rgba(20, 33, 61, 0.6);
+        }
+
+        .submit:focus-visible {
+            outline: 2px solid var(--accent-strong);
+            outline-offset: 3px;
+        }
+
+        .submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .message {
+            margin: 14px 0 0;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.45;
+        }
+
+        .message--error { color: var(--danger); }
+        .message--success { color: var(--success); }
+        .is-hidden { display: none !important; }
+
+        /* ============ Success state ============ */
+        .success-block { margin-top: 24px; }
+
+        .success-icon {
+            display: grid;
+            place-items: center;
+            width: 64px;
+            height: 64px;
+            margin: 0 auto;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+            color: #ffffff;
+            box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.5), 0 8px 20px -8px rgba(111, 146, 197, 0.55);
+        }
+
+        .success-icon svg { width: 28px; height: 28px; }
+
+        .success-title {
+            margin: 18px 0 0;
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .success-text {
+            margin: 8px auto 0;
+            max-width: 32ch;
+            color: var(--ink-soft);
+            font-size: 15px;
+        }
+
+        /* ============ Footer ============ */
+        .card-footer {
+            margin-top: 28px;
+            padding-top: 18px;
+            border-top: 1px solid var(--accent-line);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--ink-muted);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .card-footer a {
+            text-decoration: none;
+            transition: color 0.18s ease;
+        }
+
+        .card-footer a:hover { color: var(--accent-strong); }
+
+        @media (min-width: 680px) {
+            body { padding: 56px 24px; }
+            .card { padding: 44px 40px 32px; }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="shell">
+        <div class="card">
+            <header class="brand-header">
+                <span class="brand-mark" aria-hidden="true"></span>
+                <div class="brand-text">
+                    <p class="brand-name">UPlate</p>
+                    <p class="brand-line">Your University Meal Prep Buddy</p>
+                </div>
+            </header>
+
+            <!-- Form state -->
+            <div id="unsubscribe-view">
+
+                <h1 class="title">Unsubscribe from emails</h1>
+                <p class="lede">
+                    Enter the email address you'd like to remove. You'll stop receiving
+                    UPlate updates and newsletters.
+                </p>
+
+                <form id="unsubscribe-form" class="form" novalidate>
+                    <label class="field-label" for="unsubscribe-email">Email address</label>
+                    <input id="unsubscribe-email" class="input" type="email" name="email"
+                        placeholder="you@school.edu" autocomplete="email" required />
+
+                    <p id="unsubscribe-error" class="message message--error is-hidden" role="alert"></p>
+
+                    <button id="unsubscribe-submit" class="submit" type="submit">
+                        Unsubscribe
+                    </button>
+                </form>
+            </div>
+
+            <!-- Success state -->
+            <div id="unsubscribe-success" class="success-block is-hidden">
+                <div class="success-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                </div>
+                <h2 class="success-title">You're unsubscribed</h2>
+                <p class="success-text">
+                    <span id="success-email">This address</span> won't receive UPlate emails
+                    anymore. Changed your mind? Just rejoin the waitlist anytime.
+                </p>
+            </div>
+
+            <footer class="card-footer">
+                <span>UPlate</span>
+                <a href="/">u-plate.com</a>
+            </footer>
+        </div>
+    </main>
+
+    <script type="module">
+        const form = document.getElementById('unsubscribe-form');
+        const emailInput = document.getElementById('unsubscribe-email');
+        const errorEl = document.getElementById('unsubscribe-error');
+        const submitBtn = document.getElementById('unsubscribe-submit');
+        const formView = document.getElementById('unsubscribe-view');
+        const successView = document.getElementById('unsubscribe-success');
+        const successEmail = document.getElementById('success-email');
+
+        // Unsubscribe endpoint: GET|POST /:school/email/unsubscribe?email=<addr>
+        const API_BASE = 'https://boilerbites.com';
+
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function slugify(value) {
+            return value.toLowerCase().trim().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+        }
+
+        function showError(msg) {
+            errorEl.textContent = msg;
+            errorEl.classList.remove('is-hidden');
+        }
+
+        const params = new URLSearchParams(window.location.search);
+
+        // Resolve the school slug: ?school= query param, then stored university, else default.
+        const storedUni = localStorage.getItem('uplate_university') || '';
+        const school = slugify(params.get('school') || storedUni || 'purdue') || 'purdue';
+
+        // Prefill from ?email= query param (links in emails often include it)
+        const prefill = params.get('email');
+        if (prefill) emailInput.value = prefill;
+
+        emailInput.addEventListener('input', () => errorEl.classList.add('is-hidden'));
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = emailInput.value.trim();
+
+            if (!email) {
+                showError('Please enter your email address.');
+                return;
+            }
+            if (!isValidEmail(email)) {
+                showError('Please enter a valid email address.');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Unsubscribing…';
+
+            try {
+                // GET|POST /:school/email/unsubscribe?email=<addr>
+                // no-cors mirrors how the waitlist endpoint is called on the main site
+                const url = `${API_BASE}/${encodeURIComponent(school)}/email/unsubscribe?email=${encodeURIComponent(email)}`;
+                await fetch(url, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                });
+
+                // Local backup of the request
+                const existing = JSON.parse(localStorage.getItem('uplate_unsubscribes') || '[]');
+                existing.push({ email, timestamp: new Date().toISOString() });
+                localStorage.setItem('uplate_unsubscribes', JSON.stringify(existing));
+
+                successEmail.textContent = email;
+                formView.classList.add('is-hidden');
+                successView.classList.remove('is-hidden');
+            } catch (err) {
+                console.error('Unsubscribe error:', err);
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Unsubscribe';
+                showError("Something went wrong. Please try again or email contact@u-plate.com.");
+            }
+        });
+    </script>
+</body>
+
+</html>
