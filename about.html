@@ -33,10 +33,10 @@
     <meta name="twitter:image" content="https://u-plate.com/assets/logo/logo.png" />
     <meta name="twitter:image:alt" content="UPlate - University Meal Prep App Logo" />
 
-    <!-- Apple font -->
+    <!-- Schibsted Grotesk -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
@@ -96,14 +96,13 @@
     </script>
 </head>
 
-<body class="tw-flex tw-min-h-[100vh] tw-flex-col tw-bg-black tw-text-white tw-overflow-x-hidden">
-    <header
-        class="header-glass tw-fixed tw-top-0 tw-z-50 tw-flex tw-h-[72px] tw-w-full tw-items-center tw-justify-between tw-px-[5%] lg:tw-px-[8%]">
+<body class="tw-flex tw-min-h-[100vh] tw-flex-col tw-overflow-x-hidden">
+    <header class="site-header" id="site-header">
         <a class="tw-flex tw-items-center tw-gap-3" href="index.html" id="header-title">
-            <img src="./assets/logo/logo.png" alt="UPlate logo" class="tw-h-[40px] tw-w-[40px] tw-object-contain" />
-            <span class="tw-text-xl tw-font-semibold tw-tracking-tight">UPlate</span>
+            <img src="./assets/logo/logo.png" alt="UPlate logo" class="header-logo-img" />
+            <span class="header-logo-text">UPlate</span>
         </a>
-        <nav class="collapsible-header animated-collapse max-lg:tw-shadow-md" id="collapsed-header-items">
+        <nav class="collapsible-header animated-collapse" id="collapsed-header-items">
             <div
                 class="tw-flex tw-h-full tw-w-max tw-gap-8 tw-text-sm tw-font-medium max-lg:tw-mt-[30px] max-lg:tw-flex-col max-lg:tw-place-items-end max-lg:tw-gap-5 lg:tw-mx-auto lg:tw-place-items-center">
                 <a class="header-links" href="about.html">About</a>
@@ -119,27 +118,25 @@
                 </a>
             </div>
         </nav>
-        <button class="bi bi-list tw-text-2xl tw-text-white lg:tw-hidden" onclick="toggleHeader()" aria-label="menu"
+        <button class="bi bi-list tw-text-2xl tw-text-[#e8e5e0] lg:tw-hidden" onclick="toggleHeader()" aria-label="menu"
             id="collapse-btn"></button>
     </header>
 
     <section
         class="tw-relative tw-flex tw-min-h-[100vh] tw-w-full tw-flex-col tw-items-center tw-px-4 sm:tw-px-[5%] lg:tw-px-[8%] tw-pt-[120px] tw-pb-20 tw-overflow-x-hidden tw-box-border">
-        <!-- gradient orb background -->
-        <div class="hero-glow"></div>
-
         <div
             class="tw-max-w-[900px] tw-w-full tw-flex tw-flex-col tw-gap-8 tw-relative tw-z-10 tw-overflow-hidden tw-box-border">
-            <div>
-                <h1 class="tw-text-5xl tw-font-semibold tw-tracking-tight tw-mb-4 max-md:tw-text-4xl">
+            <div class="section-header">
+                <p class="kicker">The Team</p>
+                <h1 class="tw-text-5xl tw-font-medium tw-tracking-tight tw-mb-4 max-md:tw-text-4xl">
                     About Us
                 </h1>
             </div>
 
             <div
-                class="tw-flex tw-flex-col tw-gap-6 tw-text-lg tw-text-gray-300 tw-leading-relaxed tw-break-words tw-overflow-hidden">
+                class="tw-flex tw-flex-col tw-gap-6 tw-text-lg tw-text-[#a3a3a0] tw-font-light tw-leading-relaxed tw-break-words tw-overflow-hidden">
                 <div>
-                    <h2 class="tw-text-2xl tw-font-medium tw-text-white tw-mb-4">Our Mission</h2>
+                    <h2 class="tw-text-2xl tw-font-medium tw-text-[#e8e5e0] tw-mb-4">Our Mission</h2>
                     <p>
                         A 2023 Michigan State University study revealed that across 27,000 students, every one in six
                         had a dietary restriction. In 2018, it was one in eight. Whether it be a religious or
@@ -166,7 +163,7 @@
                 </div>
 
                 <div class="tw-mt-4">
-                    <h2 class="tw-text-2xl tw-font-medium tw-text-white tw-mb-4">Our Team</h2>
+                    <h2 class="tw-text-2xl tw-font-medium tw-text-[#e8e5e0] tw-mb-4">Our Team</h2>
                     <p class="tw-mb-8">
                         We are a team of 3 freshman CS students from Purdue University. Each of us is dedicated to
                         revolutionizing how students interact with campus dining. UPlate started as a hackathon idea,
@@ -256,11 +253,11 @@
                 </div>
 
                 <div class="tw-mt-4">
-                    <h2 class="tw-text-2xl tw-font-medium tw-text-white tw-mb-4">Contact Us</h2>
+                    <h2 class="tw-text-2xl tw-font-medium tw-text-[#e8e5e0] tw-mb-4">Contact Us</h2>
                     <p>
                         Have a general concern or question? Or just want to reach out? We'd love to hear from you! Feel
                         free to email us at <a href="mailto:contact@u-plate.com"
-                            class="tw-text-blue-400 hover:tw-underline">contact@u-plate.com</a>
+                            class="primary-text-color hover:tw-underline">contact@u-plate.com</a>
                     </p>
                 </div>
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#DCEDFF" />
+    <meta name="theme-color" content="#050506" />
     <title>Unsubscribe · UPlate</title>
     <meta name="description" content="Unsubscribe from UPlate emails." />
     <meta name="robots" content="noindex" />
@@ -14,33 +14,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" />
+        href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" />
 
     <style>
         :root {
-            color-scheme: light;
-            --bg: #DCEDFF;
-            --bg-grad: radial-gradient(120% 80% at 50% -10%, #ffffff 0%, #DCEDFF 55%, #c4dcf6 100%);
-            --surface: #ffffff;
-            --surface-soft: #f3f8ff;
-            --surface-sunken: #eaf2fc;
-            --accent: #94B0DA;
-            --accent-strong: #6f92c5;
-            --accent-soft: rgba(148, 176, 218, 0.14);
-            --accent-line: rgba(148, 176, 218, 0.32);
-            --ink: #14213d;
-            --ink-soft: #3b4a6b;
-            --ink-muted: #6f7e9c;
-            --danger: #c0392b;
-            --success: #2f855a;
-            --shadow-sm: 0 1px 2px rgba(20, 33, 61, 0.06);
-            --shadow-md: 0 12px 32px -12px rgba(31, 61, 110, 0.22);
-            --shadow-lg: 0 40px 80px -40px rgba(31, 61, 110, 0.45);
-            --radius-sm: 10px;
+            color-scheme: dark;
+            --bg: #050506;
+            --bg-rgb: 5, 5, 6;
+            --ink: #e8e5e0;
+            --ink-rgb: 232, 229, 224;
+            --ink-soft: #a3a3a0;
+            --ink-muted: #757572;
+            --accent: #0A8DD3;
+            --accent-rgb: 10, 141, 211;
+            --accent-soft: rgba(10, 141, 211, 0.12);
+            --hairline: rgba(232, 229, 224, 0.10);
+            --hairline-strong: rgba(232, 229, 224, 0.16);
+            --danger: #d06a5c;
+            --success: #5fb98a;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 40px 80px -40px rgba(0, 0, 0, 0.8);
             --radius-md: 14px;
-            --radius-lg: 20px;
-            --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            --font-display: "Fraunces", "Georgia", ui-serif, serif;
+            --radius-lg: 22px;
+            --font-sans: "Schibsted Grotesk", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-display: var(--font-sans);
             font-family: var(--font-sans);
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
@@ -54,8 +51,7 @@
 
         body {
             min-height: 100vh;
-            background: var(--bg-grad);
-            background-attachment: fixed;
+            background: var(--bg);
             color: var(--ink);
             font-size: 16px;
             line-height: 1.5;
@@ -63,6 +59,19 @@
             align-items: center;
             justify-content: center;
             padding: 32px 18px;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background:
+                linear-gradient(rgba(var(--ink-rgb), 0.028) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(var(--ink-rgb), 0.022) 1px, transparent 1px);
+            background-size: 72px 72px;
+            opacity: 0.34;
+            pointer-events: none;
         }
 
         button, a, input { -webkit-tap-highlight-color: transparent; }
@@ -74,13 +83,15 @@
             margin: 0 auto;
         }
 
-        /* ============ Card surface ============ */
+        /* ============ Card surface (glass moment) ============ */
         .card {
             position: relative;
             width: 100%;
             padding: 36px 32px 28px;
-            background: var(--surface);
-            border: 1px solid rgba(148, 176, 218, 0.35);
+            background: rgba(var(--ink-rgb), 0.03);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid var(--hairline-strong);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-lg);
             overflow: hidden;
@@ -92,7 +103,7 @@
             content: "";
             position: absolute;
             inset: 0;
-            background: radial-gradient(80% 50% at 50% 0%, rgba(148, 176, 218, 0.18), transparent 70%);
+            background: radial-gradient(80% 50% at 50% 0%, rgba(var(--accent-rgb), 0.08), transparent 70%);
             pointer-events: none;
             z-index: -1;
         }
@@ -117,7 +128,7 @@
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-            box-shadow: inset 0 0 0 1px rgba(148, 176, 218, 0.4), var(--shadow-sm);
+            box-shadow: inset 0 0 0 1px var(--hairline-strong), var(--shadow-sm);
         }
 
         .brand-text {
@@ -131,7 +142,7 @@
             margin: 0;
             color: var(--ink);
             font-size: 16px;
-            font-weight: 700;
+            font-weight: 600;
             letter-spacing: -0.01em;
         }
 
@@ -139,7 +150,7 @@
             margin: 4px 0 0;
             color: var(--ink-muted);
             font-size: 12px;
-            font-weight: 500;
+            font-weight: 400;
             letter-spacing: 0.02em;
         }
 
@@ -151,20 +162,20 @@
             padding: 6px 12px;
             border-radius: 999px;
             background: var(--accent-soft);
-            color: var(--accent-strong);
+            color: var(--accent);
             font-size: 11px;
-            font-weight: 700;
+            font-weight: 600;
             letter-spacing: 0.14em;
             text-transform: uppercase;
         }
 
         .title {
-            margin: 14px 0 0;
+            margin: 24px 0 0;
             color: var(--ink);
             font-family: var(--font-display);
             font-size: clamp(28px, 7vw, 34px);
-            font-weight: 600;
-            line-height: 1.1;
+            font-weight: 500;
+            line-height: 1.05;
             letter-spacing: -0.02em;
         }
 
@@ -195,31 +206,28 @@
 
         .input {
             width: 100%;
-            min-height: 56px;
-            padding: 0 18px;
-            background: var(--surface-soft);
-            border: 1px solid var(--accent-line);
-            border-radius: var(--radius-md);
+            min-height: 52px;
+            padding: 0 2px;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--hairline-strong);
+            border-radius: 0;
             color: var(--ink);
             font-family: var(--font-sans);
             font-size: 15px;
-            font-weight: 500;
-            box-shadow: var(--shadow-sm);
-            transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+            font-weight: 400;
+            transition: border-color 0.18s ease;
         }
 
         .input::placeholder { color: var(--ink-muted); }
 
         .input:hover {
-            border-color: var(--accent);
-            background: var(--surface);
+            border-bottom-color: rgba(var(--ink-rgb), 0.3);
         }
 
         .input:focus {
             outline: none;
-            border-color: var(--accent-strong);
-            background: var(--surface);
-            box-shadow: 0 0 0 3px var(--accent-soft);
+            border-bottom-color: var(--ink);
         }
 
         .submit {
@@ -229,30 +237,30 @@
             justify-content: center;
             gap: 10px;
             width: 100%;
-            min-height: 56px;
-            margin-top: 4px;
+            min-height: 54px;
+            margin-top: 14px;
             padding: 0 18px;
             border: none;
-            border-radius: var(--radius-md);
-            background: var(--ink);
+            border-radius: 999px;
+            background: linear-gradient(180deg, #1499dd, #0a7fc0);
             color: #ffffff;
             font-family: var(--font-sans);
             font-size: 15px;
-            font-weight: 600;
-            letter-spacing: -0.005em;
+            font-weight: 500;
+            letter-spacing: 0.01em;
             cursor: pointer;
-            box-shadow: 0 10px 24px -10px rgba(20, 33, 61, 0.55);
-            transition: transform 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 4px 18px rgba(var(--accent-rgb), 0.25);
+            transition: transform 0.18s ease, filter 0.18s ease, box-shadow 0.18s ease;
         }
 
         .submit:hover:not(:disabled) {
-            background: #0d1730;
+            filter: brightness(1.08);
             transform: translateY(-1px);
-            box-shadow: 0 14px 30px -10px rgba(20, 33, 61, 0.6);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 8px 26px rgba(var(--accent-rgb), 0.35);
         }
 
         .submit:focus-visible {
-            outline: 2px solid var(--accent-strong);
+            outline: 2px solid var(--accent);
             outline-offset: 3px;
         }
 
@@ -282,9 +290,9 @@
             height: 64px;
             margin: 0 auto;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+            background: linear-gradient(180deg, #1499dd, #0a7fc0);
             color: #ffffff;
-            box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.5), 0 8px 20px -8px rgba(111, 146, 197, 0.55);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 8px 20px -8px rgba(var(--accent-rgb), 0.5);
         }
 
         .success-icon svg { width: 28px; height: 28px; }
@@ -293,7 +301,7 @@
             margin: 18px 0 0;
             font-family: var(--font-display);
             font-size: 24px;
-            font-weight: 600;
+            font-weight: 500;
             letter-spacing: -0.02em;
         }
 
@@ -308,13 +316,13 @@
         .card-footer {
             margin-top: 28px;
             padding-top: 18px;
-            border-top: 1px solid var(--accent-line);
+            border-top: 1px solid var(--hairline);
             display: flex;
             align-items: center;
             justify-content: space-between;
             color: var(--ink-muted);
             font-size: 11px;
-            font-weight: 600;
+            font-weight: 500;
             letter-spacing: 0.14em;
             text-transform: uppercase;
         }
@@ -324,7 +332,7 @@
             transition: color 0.18s ease;
         }
 
-        .card-footer a:hover { color: var(--accent-strong); }
+        .card-footer a:hover { color: var(--ink); }
 
         @media (min-width: 680px) {
             body { padding: 56px 24px; }

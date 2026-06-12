@@ -359,6 +359,16 @@ function init() {
 
     window.addEventListener("resize", responsive)
 
+    // Floating nav island: collapse the header into a frosted pill on scroll
+    const siteHeader = document.getElementById("site-header")
+    if (siteHeader) {
+        const updateNavIsland = () => {
+            siteHeader.classList.toggle("nav-island", window.scrollY > 24)
+        }
+        window.addEventListener("scroll", updateNavIsland, { passive: true })
+        updateNavIsland()
+    }
+
 
     /**
      * Animations
@@ -410,11 +420,11 @@ function init() {
             // content.classList.toggle('!tw-hidden')
             if (content.style.maxHeight === '200px') {
                 content.style.maxHeight = '0px'
-                content.style.padding = '0px 18px'
+                content.style.padding = '0px 2px'
 
             } else {
                 content.style.maxHeight = '200px'
-                content.style.padding = '20px 18px'
+                content.style.padding = '0px 2px 24px'
             }
         })
     })
