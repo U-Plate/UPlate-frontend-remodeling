@@ -168,16 +168,6 @@
 </head>
 
 <body class="tw-flex tw-min-h-[100vh] tw-flex-col">
-    <!-- INTRO LANDING SCREEN -->
-    <div id="intro-screen" class="intro-screen">
-        <div class="intro-content">
-            <div id="typewriter-text" class="typewriter-text"></div>
-        </div>
-        <button id="enter-btn" class="enter-btn" aria-label="Enter site">
-            <i class="bi bi-arrow-right"></i>
-        </button>
-    </div>
-
     <!-- REFERRAL POPUP MODAL -->
     <div id="referral-modal" class="referral-modal tw-hidden">
         <div class="referral-modal-backdrop"></div>
@@ -210,7 +200,7 @@
 
     <!-- MAIN SITE WRAPPER -->
     <div id="main-site" class="main-site">
-        <header class="site-header" id="site-header">
+        <header class="site-header nav-reveal" id="site-header">
             <a class="tw-flex tw-items-center tw-gap-3" href="" id="header-title">
                 <img src="./assets/logo/logo.png" alt="UPlate logo" class="header-logo-img" />
                 <span class="header-logo-text">UPlate</span>
@@ -243,18 +233,20 @@
                 <div class="hero-glow"></div>
 
                 <div class="tw-flex tw-flex-col tw-items-center tw-text-center tw-relative tw-z-10">
-                    <h1 class="hero-title">
+                    <h1 class="hero-title hero-reveal" style="--reveal-delay: 0.05s">
                         Your University<br />
                         <span class="gradient-text-brand">Meal Prep Buddy</span>
                     </h1>
                     <p
-                        class="hero-sub tw-mt-8 tw-max-w-[550px] tw-text-xl max-md:tw-text-lg max-md:tw-max-w-full">
+                        class="hero-sub hero-reveal tw-mt-8 tw-max-w-[550px] tw-text-xl max-md:tw-text-lg max-md:tw-max-w-full"
+                        style="--reveal-delay: 0.18s">
                         The free AI-powered nutrition app built for university students — track macros, discover dining
                         hall meals, and manage dietary restrictions using data sourced directly from your campus.
                     </p>
 
                     <!-- University Search Bar -->
-                    <div class="uni-search-wrapper tw-mt-10 tw-w-full tw-max-w-[400px] tw-relative">
+                    <div class="uni-search-wrapper hero-reveal tw-mt-10 tw-w-full tw-max-w-[400px] tw-relative"
+                        style="--reveal-delay: 0.3s">
                         <div class="uni-search-container">
                             <i class="bi bi-search uni-search-icon"></i>
                             <input type="text" id="uni-search-input" class="uni-search-input"

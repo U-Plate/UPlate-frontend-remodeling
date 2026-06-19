@@ -13,104 +13,6 @@ function init() {
     const collapseBtn = document.getElementById("collapse-btn")
     const collapseHeaderItems = document.getElementById("collapsed-header-items")
 
-    // Typewriter effect 
-    const introScreen = document.getElementById("intro-screen")
-    const mainSite = document.getElementById("main-site")
-    const enterBtn = document.getElementById("enter-btn")
-    const typewriterText = document.getElementById("typewriter-text")
-
-    const phrases = [
-        "BETTER FOOD.",
-        "BETTER TRACKING.",
-        "BETTER HEALTH."
-    ]
-
-    let currentPhraseIndex = 0
-    let currentCharIndex = 0
-    let isDeleting = false
-
-    function typeWriter() {
-        const BASE_SPEED = 40
-        const PAUSE_AFTER_TYPE = 800
-        const PAUSE_AFTER_DELETE = 300
-        let pauseCounter = 0
-        let skipFrame = false
-
-        const interval = setInterval(() => {
-            if (pauseCounter > 0) {
-                pauseCounter -= BASE_SPEED
-                return
-            }
-
-            const currentPhrase = phrases[currentPhraseIndex]
-
-            if (!isDeleting) {
-                skipFrame = !skipFrame
-                if (skipFrame) return
-
-                typewriterText.textContent = currentPhrase.substring(0, currentCharIndex + 1)
-                currentCharIndex++
-
-                if (currentCharIndex === currentPhrase.length) {
-                    if (currentPhraseIndex < phrases.length - 1) {
-                        pauseCounter = PAUSE_AFTER_TYPE
-                        isDeleting = true
-                        skipFrame = false
-                    } else {
-                        clearInterval(interval)
-                        if (enterBtn) enterBtn.classList.add('visible')
-                    }
-                }
-            } else {
-                if (currentCharIndex > 7) {
-                    currentCharIndex--
-                    typewriterText.textContent = currentPhrase.substring(0, currentCharIndex)
-                } else {
-                    isDeleting = false
-                    currentPhraseIndex++
-                    currentCharIndex = 7
-                    pauseCounter = PAUSE_AFTER_DELETE
-                    skipFrame = false
-                }
-            }
-        }, BASE_SPEED)
-    }
-
-    function enterSite() {
-        const welcomeText = "MEET UPLATE!"
-        const PULSE = 12
-        const TYPE_SPEED = 50
-        const gap = TYPE_SPEED - PULSE
-
-        // Trigger haptic pattern for welcome text (from this user gesture)
-        haptics.trigger(Array.from({ length: welcomeText.length }, (_, i) => ({
-            delay: i === 0 ? 0 : gap,
-            duration: PULSE,
-            intensity: welcomeText[i] === ' ' ? 0.3 : 0.7 + Math.random() * 0.3
-        })))
-
-        // Type out "Welcome to UPlate!" visually
-        if (enterBtn) enterBtn.classList.remove('visible')
-        typewriterText.textContent = ""
-        let charIndex = 0
-
-        const interval = setInterval(() => {
-            typewriterText.textContent = welcomeText.substring(0, charIndex + 1)
-            charIndex++
-
-            if (charIndex === welcomeText.length) {
-                clearInterval(interval)
-                // Pause briefly, then transition to main site
-                setTimeout(() => {
-                    introScreen.classList.add("hidden")
-                    mainSite.classList.add("visible")
-                    document.body.style.overflow = "auto"
-                    sessionStorage.setItem("introSeen", "true")
-                }, 600)
-            }
-        }, TYPE_SPEED)
-    }
-
     // ============ REFERRAL SYSTEM ============
     const referralModal = document.getElementById("referral-modal")
     const referralForm = document.getElementById("referral-form")
@@ -167,16 +69,6 @@ function init() {
     }
 
     function showReferralModal(referralCode) {
-        // Hide intro screen immediately
-        if (introScreen) {
-            introScreen.classList.add("hidden")
-        }
-
-        // Show main site behind modal
-        if (mainSite) {
-            mainSite.classList.add("visible")
-        }
-
         // Set referrer name
         referrerNameSpan.textContent = formatReferrerName(referralCode)
 
@@ -262,26 +154,6 @@ function init() {
 
         // Handle form submission
         referralForm.addEventListener('submit', handleReferralSubmit)
-    } else if (introScreen && typewriterText) {
-        // Normal flow - check for intro
-        const hasSeenIntro = sessionStorage.getItem("introSeen")
-
-        if (hasSeenIntro) {
-            // Skip intro, go straight to main site
-            introScreen.classList.add("hidden")
-            mainSite.classList.add("visible")
-            document.body.style.overflow = "auto"
-        } else {
-            // Show intro on first visit
-            document.body.style.overflow = "hidden"
-            // Auto-start typewriter
-            setTimeout(typeWriter, 500)
-
-            // Enter button click
-            if (enterBtn) {
-                enterBtn.addEventListener("click", enterSite)
-            }
-        }
     }
 
 
