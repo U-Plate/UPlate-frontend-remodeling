@@ -7,6 +7,7 @@ const haptics = new WebHaptics();
 function init() {
 
     const RESPONSIVE_WIDTH = 1024
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
     let headerWhiteBg = false
     let isHeaderCollapsed = window.innerWidth < RESPONSIVE_WIDTH
@@ -366,36 +367,29 @@ function init() {
 
     gsap.registerPlugin(ScrollTrigger)
 
+    if (prefersReducedMotion) {
+        // Skip scroll-linked choreography entirely; snap straight to end states.
+        gsap.set(".reveal-up", { opacity: 1, y: "0%" })
+        gsap.set("#dashboard", { scale: 1, translateY: 0, rotateX: "0deg" })
+    } else {
+        gsap.to(".reveal-up", {
+            opacity: 0,
+            y: "100%",
+        })
 
-    gsap.to(".reveal-up", {
-        opacity: 0,
-        y: "100%",
-    })
-
-    // gsap.to("#dashboard", {
-    //     boxShadow: "0px 15px 25px -5px #7e22ceaa",
-    //     duration: 0.3,
-    //     scrollTrigger: {
-    //         trigger: "#hero-section",
-    //         start: "60% 60%",
-    //         end: "80% 80%",
-    //         // markers: true
-    //     }
-
-    // })
-
-    // straightens the slanting image
-    gsap.to("#dashboard", {
-        scale: 1,
-        translateY: 0,
-        rotateX: "0deg",
-        scrollTrigger: {
-            trigger: "#hero-section",
-            start: "top 80%",
-            end: "60% center",
-            scrub: 1,
-        }
-    })
+        // straightens the slanting image
+        gsap.to("#dashboard", {
+            scale: 1,
+            translateY: 0,
+            rotateX: "0deg",
+            scrollTrigger: {
+                trigger: "#hero-section",
+                start: "top 80%",
+                end: "60% center",
+                scrub: 1,
+            }
+        })
+    }
 
     const faqAccordion = document.querySelectorAll('.faq-accordion')
 
@@ -408,12 +402,12 @@ function init() {
             let content = this.nextElementSibling
 
             // content.classList.toggle('!tw-hidden')
-            if (content.style.maxHeight === '200px') {
+            if (content.style.maxHeight === '500px') {
                 content.style.maxHeight = '0px'
                 content.style.padding = '0px 18px'
 
             } else {
-                content.style.maxHeight = '200px'
+                content.style.maxHeight = '500px'
                 content.style.padding = '20px 18px'
             }
         })
@@ -421,35 +415,37 @@ function init() {
 
 
 
-    // Section reveal animations
+    // Section reveal animations (skipped entirely under reduced motion; see gsap.set above)
 
-    const sections = gsap.utils.toArray("section")
+    if (!prefersReducedMotion) {
+        const sections = gsap.utils.toArray("section")
 
-    sections.forEach((sec) => {
+        sections.forEach((sec) => {
 
-        const revealUptimeline = gsap.timeline({
-            paused: true,
-            scrollTrigger: {
-                trigger: sec,
-                start: "10% 80%", // top of trigger hits the top of viewport
-                end: "20% 90%",
-                // markers: true,
-                // scrub: 1,
-            }
+            const revealUptimeline = gsap.timeline({
+                paused: true,
+                scrollTrigger: {
+                    trigger: sec,
+                    start: "10% 80%", // top of trigger hits the top of viewport
+                    end: "20% 90%",
+                    // markers: true,
+                    // scrub: 1,
+                }
+            })
+
+            revealUptimeline.to(sec.querySelectorAll(".reveal-up"), {
+                opacity: 1,
+                duration: 0.8,
+                y: "0%",
+                stagger: 0.2,
+            })
+
+
         })
-
-        revealUptimeline.to(sec.querySelectorAll(".reveal-up"), {
-            opacity: 1,
-            duration: 0.8,
-            y: "0%",
-            stagger: 0.2,
-        })
+    }
 
 
-    })
-
-
-    // Scroll highlight and phone carousel sync 
+    // Scroll highlight and phone carousel sync (skipped under reduced motion; CSS shows a static stacked list instead)
 
     const featureItems = document.querySelectorAll('.feature-item')
     const phoneCarousel = document.getElementById('phone-carousel')
@@ -457,8 +453,8 @@ function init() {
     const featuresSection = document.getElementById('features')
 
     let currentActiveFeature = -1
-    const totalFeatures = 5
-    const anglePerItem = 360 / totalFeatures // 72 degrees between each phone
+    const totalFeatures = 4
+    const anglePerItem = 360 / totalFeatures // 90 degrees between each phone
 
     // Y-axis rotation
     function initCarousel() {
@@ -525,17 +521,17 @@ function init() {
         }
     }
 
-    // Initialize carousel on load
-    if (phoneItems.length > 0) {
+    // Initialize carousel on load (CSS shows a static stacked list under reduced motion, so skip)
+    if (!prefersReducedMotion && phoneItems.length > 0) {
         initCarousel()
+
+        // Listen to scroll events
+        window.addEventListener('scroll', updateActiveFeature)
+        window.addEventListener('resize', updateActiveFeature)
+
+        // Initial check after a small delay to let layout settle
+        setTimeout(updateActiveFeature, 100)
     }
-
-    // Listen to scroll events
-    window.addEventListener('scroll', updateActiveFeature)
-    window.addEventListener('resize', updateActiveFeature)
-
-    // Initial check after a small delay to let layout settle
-    setTimeout(updateActiveFeature, 100)
 
     // Export toggleHeader to global scope for HTML onclick
     window.toggleHeader = toggleHeader
@@ -543,7 +539,8 @@ function init() {
     // ============ UNIVERSITY SEARCH ============
     const uniSearchInput = document.getElementById('uni-search-input')
     const uniSearchResults = document.getElementById('uni-search-results')
-    const downloadButtons = document.getElementById('download-buttons')
+    const getStartedPanel = document.getElementById('get-started-panel')
+    const getStartedLink = document.getElementById('get-started-link')
     const waitlistPanel = document.getElementById('waitlist-panel')
     const waitlistForm = document.getElementById('waitlist-form')
     const waitlistUniName = document.getElementById('waitlist-uni-name')
@@ -641,7 +638,7 @@ function init() {
             || normalized === 'purdue'
     }
 
-    // Hide all reveal panels (download buttons & waitlist)
+    // Hide all reveal panels (supported-school handoff & waitlist)
     function hideAllPanels() {
         document.querySelectorAll('.hero-reveal-panel').forEach(panel => {
             panel.style.maxHeight = '0'
@@ -670,8 +667,11 @@ function init() {
         localStorage.setItem('uplate_university', raw)
 
         if (isPurdue(raw)) {
-            // Purdue → show download buttons
-            if (downloadButtons) showPanel(downloadButtons)
+            // Purdue → continue through web onboarding before downloading.
+            if (getStartedLink) {
+                getStartedLink.href = `./onboarding.html?school=${encodeURIComponent(raw)}`
+            }
+            if (getStartedPanel) showPanel(getStartedPanel)
         } else {
             // Other university → show waitlist
             if (waitlistPanel) {

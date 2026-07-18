@@ -10,7 +10,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         about: resolve(__dirname, 'about.html'),
-        unsubscribe: resolve(__dirname, 'unsubscribe.html')
+        unsubscribe: resolve(__dirname, 'unsubscribe.html'),
+        onboarding: resolve(__dirname, 'onboarding.html')
       }
     }
   }

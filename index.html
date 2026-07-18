@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#DCEDFF" />
     <title>UPlate - Your University Meal Prep Buddy</title>
 
     <link rel="stylesheet" href="./css/tailwind-build.css">
@@ -11,15 +12,15 @@
 
     <meta name="description" content="Your University Meal Prep Buddy - Better Food. Better Tracking. Better Health." />
     <link rel="canonical" href="https://u-plate.com/" />
-    <link rel="shortcut icon" href="./assets/logo/logo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="./assets/logo/logo-badge.png" type="image/x-icon" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:url" content="https://u-plate.com/" />
     <meta property="og:title" content="UPlate - Your University Meal Prep Buddy" />
     <meta property="og:description"
-        content="AI-powered meal planning designed for the way you eat on campus. Track macros, filter by dietary needs, and discover dining hall meals." />
+        content="Track macros, rank dining halls, filter by dietary needs, and eat better with your friends — the free meal-prep app built for university students." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://u-plate.com/assets/logo/logo.png" />
+    <meta property="og:image" content="https://u-plate.com/assets/logo/logo-badge.png" />
     <meta property="og:image:width" content="512" />
     <meta property="og:image:height" content="512" />
     <meta property="og:image:alt" content="UPlate - University Meal Prep App Logo" />
@@ -28,16 +29,16 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="UPlate - Your University Meal Prep Buddy" />
-    <meta name="twitter:description" content="AI-powered meal planning designed for the way you eat on campus." />
-    <meta name="twitter:image" content="https://u-plate.com/assets/logo/logo.png" />
+    <meta name="twitter:description" content="Track macros, rank dining halls, and eat better with your friends — free for university students." />
+    <meta name="twitter:image" content="https://u-plate.com/assets/logo/logo-badge.png" />
     <meta name="twitter:image:alt" content="UPlate - University Meal Prep App Logo" />
 
     <!-- <meta name="apple-itunes-app" content="app-id=6752828206"> -->
 
-    <!-- SF Pro Display Font (Apple-style) -->
+    <!-- Fraunces (display) + Inter (body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
@@ -59,7 +60,7 @@
       "name": "UPlate",
       "url": "https://u-plate.com",
       "logo": "https://u-plate.com/assets/logo/logo.png",
-      "description": "AI-powered university meal prep app for students.",
+      "description": "Free university meal prep app for students, built for tracking macros and eating well on campus.",
       "email": "contact@u-plate.com",
       "foundingDate": "2024",
       "founders": [
@@ -79,7 +80,7 @@
       "@type": "MobileApplication",
       "name": "UPlate",
       "url": "https://u-plate.com",
-      "description": "AI-powered meal planning app built for university students. Track macros, filter dining hall menus by dietary restrictions or nutritional values, and get personalized meal recommendations using data sourced directly from campus dining halls.",
+      "description": "Free meal-planning app built for university students. Track macros, rank dining halls, filter menus by dietary restrictions, and eat healthier with your friends using real data sourced directly from campus dining halls.",
       "applicationCategory": "HealthApplication",
       "operatingSystem": "iOS, Android",
       "downloadUrl": [
@@ -103,7 +104,7 @@
           "name": "What makes UPlate different?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "UPlate is the only meal prep app built specifically for university students, powered by AI trained on Stanford and Harvard nutrition research."
+            "text": "UPlate is the only meal prep app built specifically for university students — rank your dining halls, filter by dietary restrictions, and compete with friends on macros, all using real menus and food photos from your own campus."
           }
         },
         {
@@ -119,7 +120,7 @@
           "name": "Is UPlate free to use?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes! UPlate is completely free."
+            "text": "Yes! The core app is completely free — macro tracking, dining hall rankings, dietary filters, and social features all come at no cost. UPlate Pro is an optional upgrade for students who want AI-powered recommendations and extra features on top."
           }
         },
         {
@@ -132,10 +133,10 @@
         },
         {
           "@type": "Question",
-          "name": "How does UPlate's AI work?",
+          "name": "Does UPlate use AI?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Our AI is trained on Stanford and Harvard nutrition research. It analyzes your dietary preferences, fitness goals, and what's being served at your dining halls to generate personalized meal plans and recommendations."
+            "text": "AI-powered meal recommendations are available with UPlate Pro. The core app is free and doesn't need AI to be useful — macro tracking, dining hall rankings, dietary filters, and social features all work on their own."
           }
         },
         {
@@ -167,7 +168,7 @@
     </script>
 </head>
 
-<body class="tw-flex tw-min-h-[100vh] tw-flex-col tw-bg-black tw-text-white">
+<body class="tw-flex tw-min-h-[100vh] tw-flex-col">
     <!-- INTRO LANDING SCREEN -->
     <div id="intro-screen" class="intro-screen">
         <div class="intro-content">
@@ -183,10 +184,12 @@
         <div class="referral-modal-backdrop"></div>
         <div class="referral-modal-content">
             <div class="referral-modal-header">
-                <img src="./assets/logo/logo.png" alt="UPlate" class="tw-w-12 tw-h-12 tw-mb-4" />
+                <span class="logo-badge tw-w-12 tw-h-12 tw-mb-4">
+                    <img src="./assets/logo/logo.png" alt="UPlate" />
+                </span>
                 <h2 class="tw-text-2xl tw-font-semibold tw-mb-2">Welcome to UPlate!</h2>
-                <p class="tw-text-gray-400 tw-text-sm">You've been referred by <span id="referrer-name"
-                        class="tw-text-white tw-font-medium"></span></p>
+                <p class="tw-text-ink-muted tw-text-sm">You've been referred by <span id="referrer-name"
+                        class="tw-text-ink-navy tw-font-medium"></span></p>
             </div>
             <form id="referral-form" class="referral-form">
                 <div class="tw-mb-4">
@@ -195,7 +198,7 @@
                     <input type="text" id="referral-fullname" name="fullname" required placeholder=""
                         class="referral-input" />
                 </div>
-                <p class="tw-text-amber-400 tw-text-xs tw-mb-6 tw-flex tw-items-start tw-gap-2">
+                <p class="tw-text-macro-amber tw-text-xs tw-mb-6 tw-flex tw-items-start tw-gap-2">
                     <i class="bi bi-exclamation-triangle-fill tw-mt-0.5"></i>
                     <span>Make sure to use the <strong>same name</strong> when registering in the app so your referral
                         counts!</span>
@@ -213,7 +216,9 @@
         <header
             class="header-glass tw-fixed tw-top-0 tw-z-50 tw-flex tw-h-[72px] tw-w-full tw-items-center tw-justify-between tw-px-[5%] lg:tw-px-[8%]">
             <a class="tw-flex tw-items-center tw-gap-3" href="" id="header-title">
-                <img src="./assets/logo/logo.png" alt="UPlate logo" class="tw-h-[40px] tw-w-[40px] tw-object-contain" />
+                <span class="logo-badge tw-h-[40px] tw-w-[40px]">
+                    <img src="./assets/logo/logo.png" alt="UPlate logo" />
+                </span>
                 <span class="tw-text-xl tw-font-semibold tw-tracking-tight">UPlate</span>
             </a>
             <nav class="collapsible-header animated-collapse max-lg:tw-shadow-md" id="collapsed-header-items">
@@ -226,37 +231,36 @@
                 <div
                     class="tw-ml-8 tw-flex tw-place-items-center tw-gap-4 max-md:tw-w-full max-md:tw-flex-col max-md:tw-place-content-center max-md:tw-ml-0 max-md:tw-mt-6">
                     <a href="https://apps.apple.com/us/app/uplate/id6752828206" aria-label="Download"
-                        class="glass-btn tw-rounded-full tw-px-5 tw-py-2.5 tw-text-sm tw-font-medium tw-transition-all tw-duration-300 hover:tw-scale-105">
+                        class="nav-download-btn tw-rounded-full tw-px-5 tw-py-2.5 tw-text-sm tw-font-medium tw-transition-all tw-duration-300 hover:tw-scale-105">
                         <span>Download</span>
                         <i class="bi bi-apple tw-ml-2"></i>
                     </a>
                 </div>
             </nav>
-            <button class="bi bi-list tw-text-2xl tw-text-white lg:tw-hidden" onclick="toggleHeader()" aria-label="menu"
+            <button class="bi bi-list tw-text-2xl tw-text-ink-navy lg:tw-hidden" onclick="toggleHeader()" aria-label="menu"
                 id="collapse-btn"></button>
         </header>
 
+        <!-- HERO -->
         <section
-            class="hero-section tw-relative tw-flex tw-min-h-[100vh] tw-w-full tw-flex-col tw-overflow-hidden tw-pt-[120px] tw-pb-20"
+            class="tw-relative tw-flex tw-min-h-[100vh] tw-w-full tw-flex-col tw-justify-center tw-overflow-hidden tw-pt-[100px] tw-pb-20 tw-px-[5%] lg:tw-px-[8%]"
             id="hero-section">
-            <div class="tw-flex tw-h-full tw-w-full tw-flex-col tw-items-center tw-gap-8 tw-px-[5%]">
-                <!-- Subtle gradient orb background -->
-                <div class="hero-glow"></div>
+            <div class="tw-mx-auto tw-grid tw-w-full tw-max-w-[1280px] tw-grid-cols-[1.1fr_0.9fr] tw-items-center tw-gap-16 max-lg:tw-grid-cols-1 max-lg:tw-gap-12">
 
-                <div class="tw-flex tw-flex-col tw-items-center tw-text-center tw-relative tw-z-10">
+                <div>
+                    <span class="eyebrow">Free for students · Built for campus dining</span>
                     <h1
-                        class="hero-title tw-text-6xl tw-font-semibold tw-tracking-tight tw-leading-[1.1] max-lg:tw-text-5xl max-md:tw-text-4xl">
-                        Your University<br />
-                        <span class="gradient-text-apple">Meal Prep Buddy</span>
+                        class="hero-title tw-mt-6 tw-text-6xl tw-font-semibold tw-tracking-tight tw-leading-[1.05] max-lg:tw-text-5xl max-md:tw-text-4xl">
+                        Eat better,<br />every day.
                     </h1>
                     <p
-                        class="tw-mt-6 tw-max-w-[550px] tw-text-xl tw-text-gray-400 tw-font-light max-md:tw-text-lg max-md:tw-max-w-full">
-                        The free AI-powered nutrition app built for university students — track macros, discover dining
-                        hall meals, and manage dietary restrictions using data sourced directly from your campus.
+                        class="tw-mt-6 tw-max-w-[480px] tw-text-xl tw-text-ink-soft max-md:tw-text-lg">
+                        The free meal-prep buddy built for university students — track macros, rank dining halls,
+                        filter by dietary needs, and eat well with the people you already eat with.
                     </p>
 
                     <!-- University Search Bar -->
-                    <div class="uni-search-wrapper tw-mt-10 tw-w-full tw-max-w-[400px] tw-relative">
+                    <div class="uni-search-wrapper tw-mt-10 tw-w-full tw-max-w-[420px] tw-relative">
                         <div class="uni-search-container">
                             <i class="bi bi-search uni-search-icon"></i>
                             <input type="text" id="uni-search-input" class="uni-search-input"
@@ -265,28 +269,22 @@
                         <ul id="uni-search-results" class="uni-search-results tw-hidden"></ul>
                     </div>
 
-                    <!-- Download buttons (Purdue only) -->
-                    <div id="download-buttons"
-                        class="hero-reveal-panel tw-mt-6 tw-flex tw-items-center tw-gap-4 max-md:tw-flex-col tw-opacity-0 tw-translate-y-4 tw-transition-all tw-duration-500 tw-pointer-events-none"
+                    <!-- Supported schools continue into web onboarding. -->
+                    <div id="get-started-panel"
+                        class="hero-reveal-panel tw-mt-6 tw-flex tw-items-center tw-gap-4 tw-opacity-0 tw-translate-y-4 tw-transition-all tw-duration-500 tw-pointer-events-none"
                         style="max-height: 0; overflow: hidden;">
-                        <a class="primary-btn tw-flex tw-items-center tw-gap-2"
-                            href="https://apps.apple.com/us/app/uplate/id6752828206">
-                            <i class="bi bi-apple"></i>
-                            Download for iOS
-                        </a>
-                        <a class="secondary-btn tw-flex tw-items-center tw-gap-2"
-                            href="https://play.google.com/store/apps/details?id=com.njr.boilerFuel">
-                            <i class="bi bi-android2"></i>
-                            Download for Android
+                        <a id="get-started-link" class="primary-btn tw-flex tw-items-center tw-gap-2" href="./onboarding.html">
+                            Get started
+                            <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
 
                     <!-- Waitlist form (non-Purdue universities) -->
                     <div id="waitlist-panel"
-                        class="hero-reveal-panel tw-mt-6 tw-flex tw-flex-col tw-items-center tw-gap-4 tw-opacity-0 tw-translate-y-4 tw-transition-all tw-duration-500 tw-pointer-events-none tw-w-full tw-max-w-[500px]"
+                        class="hero-reveal-panel tw-mt-6 tw-flex tw-flex-col tw-items-start tw-gap-4 tw-opacity-0 tw-translate-y-4 tw-transition-all tw-duration-500 tw-pointer-events-none tw-w-full tw-max-w-[500px]"
                         style="max-height: 0; overflow: hidden;">
-                        <p class="tw-text-gray-400 tw-text-base tw-text-center">
-                            We're not at <span id="waitlist-uni-name" class="tw-text-white tw-font-medium"></span> yet —
+                        <p class="tw-text-ink-soft tw-text-base">
+                            We're not at <span id="waitlist-uni-name" class="tw-text-ink-navy tw-font-medium"></span> yet —
                             but we're expanding!
                         </p>
                         <form id="waitlist-form" class="tw-flex tw-w-full tw-flex-col tw-gap-3">
@@ -300,64 +298,59 @@
                                     Join the Waitlist
                                 </button>
                             </div>
-                            <p id="waitlist-error" class="tw-text-red-400 tw-text-sm tw-hidden tw-text-center"></p>
+                            <p id="waitlist-error" class="tw-text-danger tw-text-sm tw-hidden"></p>
                         </form>
-                        <p id="waitlist-success" class="tw-text-green-400 tw-text-sm tw-hidden">You're on the list!
+                        <p id="waitlist-success" class="tw-text-success tw-text-sm tw-hidden">You're on the list!
                             We'll let you know when we launch at your school.</p>
                     </div>
                 </div>
 
-                <div class="reveal-up tw-relative tw-mt-12 tw-flex tw-w-full tw-justify-center"
+                <div class="reveal-up tw-relative tw-flex tw-justify-center max-lg:tw-max-w-[280px] max-lg:tw-mx-auto"
                     id="dashboard-container">
-                    <div class="tw-relative tw-max-w-[700px] tw-overflow-hidden tw-rounded-[40px] max-md:tw-max-w-full"
-                        id="dashboard">
-                        <div class="phone-glow"></div>
-                        <img src="./assets/images/home/phone.png" alt="UPlate App"
+                    <div class="hero-frame tw-relative tw-max-w-[380px] tw-w-full" id="dashboard">
+                        <img src="./assets/images/home/hero-app.png" alt="UPlate app showing the welcome screen: Eat better, every day."
                             class="tw-w-full tw-object-contain tw-relative tw-z-10" />
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- FEATURE STORY (scroll-driven) -->
         <section
             class="tw-relative tw-flex tw-min-h-[100vh] tw-w-full tw-flex-col tw-items-center tw-px-[5%] lg:tw-px-[8%] tw-py-16"
             id="features">
             <div class="section-header tw-text-center tw-mb-20">
-                <h2 class="tw-text-5xl tw-font-semibold tw-tracking-tight max-md:tw-text-3xl">
+                <h2 class="display-text tw-text-5xl tw-tracking-tight max-md:tw-text-3xl">
                     The Future of<br />Campus Dining
                 </h2>
             </div>
 
             <!-- Scroll trigger area for the features -->
-            <div class="tw-h-[550vh] tw-relative tw-w-full tw-max-w-[1400px]" id="features-scroll-container">
+            <div class="tw-h-[300vh] tw-relative tw-w-full tw-max-w-[1400px]" id="features-scroll-container">
                 <!-- Sticky container holds both phone and text cards -->
                 <div
                     class="tw-sticky tw-top-0 tw-h-screen tw-flex tw-items-center tw-justify-center tw-gap-16 max-lg:tw-flex-col max-lg:tw-gap-8">
 
                     <!-- Phone carousel on the left -->
                     <div class="tw-relative tw-flex tw-flex-col tw-items-center">
-                        <div class="tw-h-[600px] tw-w-[400px] max-lg:tw-h-[350px] max-lg:tw-w-[240px]"
+                        <div class="tw-h-[690px] tw-w-[340px] max-lg:tw-h-[386px] max-lg:tw-w-[190px]"
                             id="phone-carousel-wrapper">
                             <div class="phone-carousel" id="phone-carousel">
                                 <div class="phone-carousel-item" data-index="0">
-                                    <img src="./assets/images/home/brandbird-iphone-16.png"
-                                        alt="UPlate AI-powered meal plans screen" />
+                                    <img src="./assets/images/home/feature-ai-plans.png"
+                                        alt="UPlate screen showing a menu-aware macro plan built from today's dining hall menu" />
                                 </div>
                                 <div class="phone-carousel-item" data-index="1">
-                                    <img src="./assets/images/home/brandbird-iphone-16(1).png"
-                                        alt="UPlate macro tracking screen" />
+                                    <img src="./assets/images/home/feature-macros.png"
+                                        alt="UPlate screen showing daily calorie target and protein, carb, and fat breakdown" />
                                 </div>
                                 <div class="phone-carousel-item" data-index="2">
-                                    <img src="./assets/images/home/brandbird-iphone-16(5).png"
-                                        alt="UPlate dining hall rankings screen" />
+                                    <img src="./assets/images/home/feature-filters.png"
+                                        alt="UPlate screen for setting allergies and diet style filters" />
                                 </div>
                                 <div class="phone-carousel-item" data-index="3">
-                                    <img src="./assets/images/home/brandbird-iphone-16(3).png"
-                                        alt="UPlate dietary filters screen" />
-                                </div>
-                                <div class="phone-carousel-item" data-index="4">
-                                    <img src="./assets/images/home/brandbird-iphone-16(4).png"
-                                        alt="UPlate unified dashboard screen" />
+                                    <img src="./assets/images/home/feature-food-photos.png"
+                                        alt="UPlate screen showing community favorites and real food photos at each dining hall" />
                                 </div>
                             </div>
                         </div>
@@ -366,71 +359,57 @@
                     <!-- Stacked feature cards on the right -->
                     <div class="feature-slides-container" id="features-text-container">
                         <div class="feature-item" data-feature="0">
-                            <div class="feature-card glass-card">
-                                <div class="feature-icon">
-                                    <i class="bi bi-cpu"></i>
+                            <div class="feature-card">
+                                <div class="icon-badge tw-mb-5">
+                                    <i class="bi bi-list-check"></i>
                                 </div>
-                                <h3 class="tw-text-3xl tw-font-medium tw-mb-4 max-lg:tw-text-2xl">
-                                    AI-Powered Meal Plans
+                                <h3 class="display-text tw-text-3xl tw-mb-4 max-lg:tw-text-2xl">
+                                    Menu-Aware Meal Plans
                                 </h3>
-                                <p class="tw-text-gray-400 tw-text-lg tw-leading-relaxed">
-                                    Customized meal plans that fit your lifestyle, preferences, and nutritional goals.
+                                <p class="tw-text-ink-soft tw-text-lg tw-leading-relaxed">
+                                    Daily calorie and macro targets tuned to what's actually cooking at your dining hall today.
                                 </p>
                             </div>
                         </div>
 
                         <div class="feature-item" data-feature="1">
-                            <div class="feature-card glass-card">
-                                <div class="feature-icon">
+                            <div class="feature-card">
+                                <div class="icon-badge tw-mb-5">
                                     <i class="bi bi-graph-up-arrow"></i>
                                 </div>
-                                <h3 class="tw-text-3xl tw-font-medium tw-mb-4 max-lg:tw-text-2xl">
+                                <h3 class="display-text tw-text-3xl tw-mb-4 max-lg:tw-text-2xl">
                                     Macro Tracking
                                 </h3>
-                                <p class="tw-text-gray-400 tw-text-lg tw-leading-relaxed">
-                                    Track macros, log meals, and save your favorites with intuitive insights.
+                                <p class="tw-text-ink-soft tw-text-lg tw-leading-relaxed">
+                                    Log meals in one tap and track protein, carbs, and fat without the guesswork.
                                 </p>
                             </div>
                         </div>
 
                         <div class="feature-item" data-feature="2">
-                            <div class="feature-card glass-card">
-                                <div class="feature-icon">
-                                    <i class="bi bi-star"></i>
-                                </div>
-                                <h3 class="tw-text-3xl tw-font-medium tw-mb-4 max-lg:tw-text-2xl">
-                                    Hall Rankings
-                                </h3>
-                                <p class="tw-text-gray-400 tw-text-lg tw-leading-relaxed">
-                                    Rank your favorite dining halls and get personalized recommendations.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="feature-item" data-feature="3">
-                            <div class="feature-card glass-card">
-                                <div class="feature-icon">
+                            <div class="feature-card">
+                                <div class="icon-badge tw-mb-5">
                                     <i class="bi bi-funnel"></i>
                                 </div>
-                                <h3 class="tw-text-3xl tw-font-medium tw-mb-4 max-lg:tw-text-2xl">
+                                <h3 class="display-text tw-text-3xl tw-mb-4 max-lg:tw-text-2xl">
                                     Dietary Filters
                                 </h3>
-                                <p class="tw-text-gray-400 tw-text-lg tw-leading-relaxed">
+                                <p class="tw-text-ink-soft tw-text-lg tw-leading-relaxed">
                                     Easily filter by dietary restrictions — vegan, gluten-free, allergies, and more.
                                 </p>
                             </div>
                         </div>
 
-                        <div class="feature-item" data-feature="4">
-                            <div class="feature-card glass-card">
-                                <div class="feature-icon">
-                                    <i class="bi bi-grid-3x3-gap"></i>
+                        <div class="feature-item" data-feature="3">
+                            <div class="feature-card">
+                                <div class="icon-badge tw-mb-5">
+                                    <i class="bi bi-star"></i>
                                 </div>
-                                <h3 class="tw-text-3xl tw-font-medium tw-mb-4 max-lg:tw-text-2xl">
-                                    Unified Dashboard
+                                <h3 class="display-text tw-text-3xl tw-mb-4 max-lg:tw-text-2xl">
+                                    Food Rating &amp; Photos
                                 </h3>
-                                <p class="tw-text-gray-400 tw-text-lg tw-leading-relaxed">
-                                    Seamlessly track all your dining halls on one beautiful page.
+                                <p class="tw-text-ink-soft tw-text-lg tw-leading-relaxed">
+                                    Rate your foods and see what your peers think — view real photos so you know what it is before you go.
                                 </p>
                             </div>
                         </div>
@@ -439,142 +418,137 @@
             </div>
         </section>
 
-
+        <!-- EVERYTHING YOU NEED (asymmetric: stat ring + checklist, not a grid) -->
         <section
             class="tw-relative tw-flex tw-w-full tw-flex-col tw-items-center tw-px-[5%] lg:tw-px-[8%] tw-py-16 tw-pb-32">
-            <div class="section-header tw-text-center tw-mb-10">
-                <h2 class="tw-text-5xl tw-font-semibold tw-tracking-tight max-md:tw-text-3xl">
-                    Everything You Need
-                </h2>
-            </div>
-            <div class="tw-flex tw-flex-col tw-items-center tw-gap-8 tw-w-full tw-max-w-[1400px]">
-                <div class="tw-grid tw-grid-cols-2 tw-max-w-[1000px] tw-gap-6 max-lg:tw-grid-cols-1">
-                    <div class="glass-card feature-grid-card">
-                        <div class="feature-icon-small">
-                            <i class="bi bi-globe2"></i>
+            <div class="tw-mx-auto tw-grid tw-w-full tw-max-w-[1200px] tw-grid-cols-[0.85fr_1.15fr] tw-gap-16 max-lg:tw-grid-cols-1 max-lg:tw-gap-12 tw-items-center">
+
+                <div class="stat-ring-card max-lg:tw-order-last">
+                    <div class="stat-ring">
+                        <span class="stat-number">2,458</span>
+                        <span class="stat-label">Calories</span>
+                    </div>
+                    <div class="macro-row">
+                        <div class="macro-chip protein">
+                            <div class="macro-value">123g</div>
+                            <div class="macro-label">Protein</div>
                         </div>
-                        <div>
-                            <h3 class="tw-text-xl tw-font-medium tw-mb-2">
-                                All-Inclusive
-                            </h3>
-                            <p class="tw-text-gray-400 tw-text-base">
-                                One stop app for all dining halls, on-the-go options, and resident restaurants.
-                            </p>
+                        <div class="macro-chip carbs">
+                            <div class="macro-value">307g</div>
+                            <div class="macro-label">Carbs</div>
+                        </div>
+                        <div class="macro-chip fat">
+                            <div class="macro-value">82g</div>
+                            <div class="macro-label">Fat</div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="glass-card feature-grid-card">
-                        <div class="feature-icon-small">
-                            <i class="bi bi-bar-chart-fill"></i>
+                <div>
+                    <h2 class="display-text tw-text-5xl tw-tracking-tight tw-mb-6 max-md:tw-text-3xl">
+                        Everything You Need
+                    </h2>
+                    <div>
+                        <div class="checklist-row">
+                            <div class="icon-badge-sm"><i class="bi bi-globe2"></i></div>
+                            <div>
+                                <h3 class="tw-text-xl tw-font-medium tw-mb-1">All-Inclusive</h3>
+                                <p class="tw-text-ink-soft">One stop app for dining hall menus, on-the-go restaurants, and resident dining — all in one place.</p>
+                            </div>
                         </div>
-                        <div>
-                            <h3 class="tw-text-xl tw-font-medium tw-mb-2">
-                                Real-Time Insights
-                            </h3>
-                            <p class="tw-text-gray-400 tw-text-base">
-                                Intuitive macro tracking for personalized insights that align with your goals.
-                            </p>
+                        <div class="checklist-row">
+                            <div class="icon-badge-sm"><i class="bi bi-bar-chart-fill"></i></div>
+                            <div>
+                                <h3 class="tw-text-xl tw-font-medium tw-mb-1">Real-Time Insights</h3>
+                                <p class="tw-text-ink-soft">Effortless macro tracking that updates in real time, every time you log a meal.</p>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="glass-card feature-grid-card">
-                        <div class="feature-icon-small">
-                            <i class="bi bi-bell-fill"></i>
+                        <div class="checklist-row">
+                            <div class="icon-badge-sm"><i class="bi bi-bell-fill"></i></div>
+                            <div>
+                                <h3 class="tw-text-xl tw-font-medium tw-mb-1">Meal Alerts</h3>
+                                <p class="tw-text-ink-soft">Get notified when your favorite meals are being served at dining halls.</p>
+                            </div>
                         </div>
-                        <div>
-                            <h3 class="tw-text-xl tw-font-medium tw-mb-2">
-                                Meal Alerts
-                            </h3>
-                            <p class="tw-text-gray-400 tw-text-base">
-                                Get notified when your favorite meals are being served at dining halls.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="glass-card feature-grid-card">
-                        <div class="feature-icon-small">
-                            <i class="bi bi-sliders"></i>
-                        </div>
-                        <div>
-                            <h3 class="tw-text-xl tw-font-medium tw-mb-2">
-                                Fully Customizable
-                            </h3>
-                            <p class="tw-text-gray-400 tw-text-base">
-                                Filter foods, create meals, and update your fitness goals anytime.
-                            </p>
+                        <div class="checklist-row">
+                            <div class="icon-badge-sm"><i class="bi bi-sliders"></i></div>
+                            <div>
+                                <h3 class="tw-text-xl tw-font-medium tw-mb-1">Fully Customizable</h3>
+                                <p class="tw-text-ink-soft">Filter foods, create meals, and update your fitness goals anytime.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- HOW IT WORKS (numbered vertical flow) -->
         <section
             class="tw-relative tw-flex tw-w-full tw-flex-col tw-items-center tw-px-[5%] lg:tw-px-[8%] tw-py-16 tw-pb-32">
-            <div class="section-header tw-text-center tw-mb-10">
-                <h2 class="tw-text-5xl tw-font-semibold tw-tracking-tight max-md:tw-text-3xl">
+            <div class="section-header tw-text-center tw-mb-16">
+                <h2 class="display-text tw-text-5xl tw-tracking-tight max-md:tw-text-3xl">
                     How It Works
                 </h2>
             </div>
-            <div class="tw-flex tw-flex-col tw-items-center tw-gap-8 tw-w-full tw-max-w-[1400px]">
-                <div class="tw-grid tw-grid-cols-2 tw-max-w-[1000px] tw-gap-6 max-lg:tw-grid-cols-1">
-                    <div class="glass-card feature-grid-card">
-                        <div class="feature-icon-small">
-                            <i class="bi bi-search"></i>
-                        </div>
-                        <div>
-                            <h3 class="tw-text-xl tw-font-medium tw-mb-2">
-                                1. Search Your University
-                            </h3>
-                            <p class="tw-text-gray-400 tw-text-base">
-                                Find your school and browse real-time dining hall menus sourced directly from campus
-                                food services.
-                            </p>
-                        </div>
+            <div class="tw-w-full tw-max-w-[640px]">
+                <div class="step-row">
+                    <div class="step-number">1</div>
+                    <div>
+                        <h3 class="tw-text-2xl tw-font-medium tw-mb-2">Search Your University</h3>
+                        <p class="tw-text-ink-soft tw-text-lg">Find your school and browse real-time dining hall menus sourced directly from campus food services.</p>
                     </div>
-
-                    <div class="glass-card feature-grid-card">
-                        <div class="feature-icon-small">
-                            <i class="bi bi-funnel"></i>
-                        </div>
-                        <div>
-                            <h3 class="tw-text-xl tw-font-medium tw-mb-2">
-                                2. Filter By Your Needs
-                            </h3>
-                            <p class="tw-text-gray-400 tw-text-base">
-                                Filter menus by dietary restrictions like vegan, gluten-free, or allergies — or sort by
-                                nutritional values like protein, carbs, fat, and calories.
-                            </p>
-                        </div>
+                </div>
+                <div class="step-row">
+                    <div class="step-number">2</div>
+                    <div>
+                        <h3 class="tw-text-2xl tw-font-medium tw-mb-2">Filter By Your Needs</h3>
+                        <p class="tw-text-ink-soft tw-text-lg">Filter menus by dietary restrictions like vegan, gluten-free, or allergies — or sort by nutritional values like protein, carbs, fat, and calories.</p>
                     </div>
-
-                    <div class="glass-card feature-grid-card">
-                        <div class="feature-icon-small">
-                            <i class="bi bi-graph-up-arrow"></i>
-                        </div>
-                        <div>
-                            <h3 class="tw-text-xl tw-font-medium tw-mb-2">
-                                3. Track Your Macros
-                            </h3>
-                            <p class="tw-text-gray-400 tw-text-base">
-                                Log meals with one tap and track your daily macro intake with real-time insights aligned
-                                to your fitness goals.
-                            </p>
-                        </div>
+                </div>
+                <div class="step-row">
+                    <div class="step-number">3</div>
+                    <div>
+                        <h3 class="tw-text-2xl tw-font-medium tw-mb-2">Track Your Macros</h3>
+                        <p class="tw-text-ink-soft tw-text-lg">Log meals with one tap and track your daily macro intake with real-time insights aligned to your fitness goals.</p>
                     </div>
+                </div>
+                <div class="step-row">
+                    <div class="step-number">4</div>
+                    <div>
+                        <h3 class="tw-text-2xl tw-font-medium tw-mb-2">Rate, Rank, and Compete</h3>
+                        <p class="tw-text-ink-soft tw-text-lg">See real food photos and ratings from other students, then challenge your friends on macro goals.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <div class="glass-card feature-grid-card">
-                        <div class="feature-icon-small">
-                            <i class="bi bi-cpu"></i>
-                        </div>
-                        <div>
-                            <h3 class="tw-text-xl tw-font-medium tw-mb-2">
-                                4. Get AI Recommendations
-                            </h3>
-                            <p class="tw-text-gray-400 tw-text-base">
-                                Receive personalized meal plans powered by AI trained on Stanford & Harvard nutrition
-                                research, optimized for what's being served today.
-                            </p>
-                        </div>
+        <!-- UPLATE SOCIAL -->
+        <section class="tw-relative tw-flex tw-w-full tw-flex-col tw-items-center tw-px-[5%] lg:tw-px-[8%] tw-py-16 tw-pb-32">
+            <div class="tw-mx-auto tw-grid tw-w-full tw-max-w-[1200px] tw-grid-cols-[1fr_0.9fr] tw-gap-16 max-lg:tw-grid-cols-1 max-lg:tw-gap-12 tw-items-center">
+                <div>
+                    <span class="eyebrow">Eat better, together</span>
+                    <h2 class="display-text tw-text-5xl tw-tracking-tight tw-mt-6 tw-mb-6 max-md:tw-text-3xl">
+                        Because eating well is easier with friends.
+                    </h2>
+                    <p class="tw-text-ink-soft tw-text-lg tw-mb-8 tw-max-w-[480px]">
+                        UPlate Social turns your dining hall trips into something you actually look forward to —
+                        compare macros, rate real food photos, and see what your friends are actually eating, not a stock photo of it.
+                    </p>
+                    <ul class="social-list">
+                        <li><span class="check-dot"><i class="bi bi-check-lg"></i></span> Friends</li>
+                        <li><span class="check-dot"><i class="bi bi-check-lg"></i></span> Macro Competitions</li>
+                        <li><span class="check-dot"><i class="bi bi-check-lg"></i></span> Food Rating</li>
+                        <li><span class="check-dot"><i class="bi bi-check-lg"></i></span> Saved to the Cloud</li>
+                    </ul>
+                </div>
+                <div class="tw-grid tw-grid-cols-2 tw-gap-4 max-md:tw-grid-cols-1">
+                    <div class="social-photo tw-aspect-[3/4]">
+                        <img src="https://images.unsplash.com/photo-1753351051905-8b341bdbd3aa?auto=format&fit=crop&w=800&q=80"
+                            alt="Friends sharing pizza and laughing together at a table" loading="lazy" />
+                    </div>
+                    <div class="social-photo tw-aspect-[3/4] max-md:tw-hidden">
+                        <img src="./assets/images/home/social-app.png"
+                            alt="UPlate Social screen showing Friends, Macro Competitions, and Food Rating" loading="lazy" />
                     </div>
                 </div>
             </div>
@@ -583,23 +557,24 @@
         <section class="tw-flex tw-w-full tw-flex-col tw-items-center tw-gap-8 tw-py-16 tw-px-[5%] lg:tw-px-[8%]"
             id="faq">
             <div class="section-header tw-text-center">
-                <h2 class="tw-text-5xl tw-font-semibold tw-tracking-tight max-md:tw-text-3xl">
+                <h2 class="display-text tw-text-5xl tw-tracking-tight max-md:tw-text-3xl">
                     Frequently Asked
                 </h2>
             </div>
             <div class="tw-flex tw-w-full tw-max-w-[700px] tw-flex-col tw-gap-3">
-                <div class="faq glass-card-dark">
+                <div class="faq">
                     <div class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-lg tw-font-medium">
                         <span>What makes UPlate different?</span>
                         <i class="bi bi-plus tw-ml-auto tw-text-xl"></i>
                     </div>
                     <div class="content">
-                        UPlate is the only meal prep app built specifically for university students, powered by AI
-                        trained on Stanford and Harvard nutrition research.
+                        UPlate is the only meal prep app built specifically for university students — rank your
+                        dining halls, filter by dietary restrictions, and compete with friends on macros, all using
+                        real menus and food photos from your own campus.
                     </div>
                 </div>
 
-                <div class="faq glass-card-dark">
+                <div class="faq">
                     <div class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-lg tw-font-medium">
                         <span>Which universities are supported?</span>
                         <i class="bi bi-plus tw-ml-auto tw-text-xl"></i>
@@ -610,17 +585,19 @@
                     </div>
                 </div>
 
-                <div class="faq glass-card-dark">
+                <div class="faq">
                     <div class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-lg tw-font-medium">
                         <span>Is UPlate free to use?</span>
                         <i class="bi bi-plus tw-ml-auto tw-text-xl"></i>
                     </div>
                     <div class="content">
-                        Yes! UPlate is completely free.
+                        Yes! The core app is completely free — macro tracking, dining hall rankings, dietary
+                        filters, and social features all come at no cost. UPlate Pro is an optional upgrade for
+                        students who want AI-powered recommendations and extra features on top.
                     </div>
                 </div>
 
-                <div class="faq glass-card-dark">
+                <div class="faq">
                     <div class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-lg tw-font-medium">
                         <span>How accurate is the nutrition data?</span>
                         <i class="bi bi-plus tw-ml-auto tw-text-xl"></i>
@@ -630,19 +607,19 @@
                     </div>
                 </div>
 
-                <div class="faq glass-card-dark">
+                <div class="faq">
                     <div class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-lg tw-font-medium">
-                        <span>How does UPlate's AI work?</span>
+                        <span>Does UPlate use AI?</span>
                         <i class="bi bi-plus tw-ml-auto tw-text-xl"></i>
                     </div>
                     <div class="content">
-                        Our AI is trained on Stanford and Harvard nutrition research. It analyzes your dietary
-                        preferences, fitness goals, and what's being served at your dining halls to generate
-                        personalized meal plans and recommendations.
+                        AI-powered meal recommendations are available with UPlate Pro. The core app is free and
+                        doesn't need AI to be useful — macro tracking, dining hall rankings, dietary filters, and
+                        social features all work on their own.
                     </div>
                 </div>
 
-                <div class="faq glass-card-dark">
+                <div class="faq">
                     <div class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-lg tw-font-medium">
                         <span>What dietary restrictions does UPlate support?</span>
                         <i class="bi bi-plus tw-ml-auto tw-text-xl"></i>
@@ -654,7 +631,7 @@
                     </div>
                 </div>
 
-                <div class="faq glass-card-dark">
+                <div class="faq">
                     <div class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-lg tw-font-medium">
                         <span>How is UPlate different from other nutrition apps?</span>
                         <i class="bi bi-plus tw-ml-auto tw-text-xl"></i>
@@ -666,7 +643,7 @@
                     </div>
                 </div>
 
-                <div class="faq glass-card-dark">
+                <div class="faq">
                     <div class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-lg tw-font-medium">
                         <span>How often are dining hall menus updated?</span>
                         <i class="bi bi-plus tw-ml-auto tw-text-xl"></i>
@@ -679,7 +656,7 @@
             </div>
 
             <div class="tw-mt-20 tw-flex tw-flex-col tw-items-center tw-gap-4">
-                <p class="tw-text-lg tw-text-gray-400">
+                <p class="tw-text-lg tw-text-ink-soft">
                     Still have questions?
                 </p>
                 <a href="about.html" class="secondary-btn">
@@ -690,11 +667,11 @@
 
         <!-- CTA Section -->
         <section class="tw-flex tw-w-full tw-flex-col tw-items-center tw-py-32 tw-px-[5%] lg:tw-px-[8%]">
-            <div class="cta-card glass-card-glow tw-max-w-[900px] tw-w-full tw-text-center tw-py-16 tw-px-8">
+            <div class="cta-card on-navy tw-max-w-[900px] tw-w-full tw-text-center tw-py-16 tw-px-8">
                 <h2 class="tw-text-4xl tw-font-semibold tw-mb-4 max-md:tw-text-3xl">
                     Ready to transform your campus dining?
                 </h2>
-                <p class="tw-text-xl tw-text-gray-400 tw-mb-8 max-md:tw-text-lg">
+                <p class="tw-text-xl tw-text-white/70 tw-mb-8 max-md:tw-text-lg">
                     Join thousands of students eating smarter.
                 </p>
                 <div class="tw-flex tw-justify-center tw-gap-4 max-md:tw-flex-col max-md:tw-items-center">
@@ -712,22 +689,23 @@
             </div>
         </section>
 
-        <footer class="tw-mt-auto tw-border-t tw-border-white/10 tw-py-16 tw-px-[8%]">
+        <footer class="tw-mt-auto tw-border-t tw-border-accent-line tw-py-16 tw-px-[8%]">
             <div class="tw-max-w-[1200px] tw-mx-auto tw-flex tw-justify-between tw-gap-12 max-md:tw-flex-col">
                 <div class="tw-flex tw-flex-col tw-gap-6">
                     <div class="tw-flex tw-items-center tw-gap-3">
-                        <img src="./assets/logo/logo.png" alt="UPlate logo"
-                            class="tw-w-[40px] tw-h-[40px] tw-object-contain" />
+                        <span class="logo-badge tw-w-[40px] tw-h-[40px]">
+                            <img src="./assets/logo/logo.png" alt="UPlate logo" />
+                        </span>
                         <span class="tw-text-xl tw-font-semibold">UPlate</span>
                     </div>
-                    <p class="tw-text-gray-500 tw-text-sm tw-max-w-[250px]">
-                        Your AI-powered university meal prep companion.
+                    <p class="tw-text-ink-muted tw-text-sm tw-max-w-[250px]">
+                        Your free university meal-prep companion — better with friends.
                     </p>
                 </div>
 
                 <div class="tw-flex tw-gap-20 max-md:tw-gap-12">
                     <div class="tw-flex tw-flex-col tw-gap-4">
-                        <h3 class="tw-text-sm tw-font-semibold tw-uppercase tw-tracking-wider tw-text-gray-500">Product
+                        <h3 class="tw-text-sm tw-font-semibold tw-uppercase tw-tracking-wider tw-text-ink-muted">Product
                         </h3>
                         <div class="tw-flex tw-flex-col tw-gap-3 tw-text-sm">
                             <a href="#features" class="footer-link">Features</a>
@@ -736,7 +714,7 @@
                     </div>
 
                     <div class="tw-flex tw-flex-col tw-gap-4">
-                        <h3 class="tw-text-sm tw-font-semibold tw-uppercase tw-tracking-wider tw-text-gray-500">Company
+                        <h3 class="tw-text-sm tw-font-semibold tw-uppercase tw-tracking-wider tw-text-ink-muted">Company
                         </h3>
                         <div class="tw-flex tw-flex-col tw-gap-3 tw-text-sm">
                             <a href="about.html" class="footer-link">About</a>
@@ -746,7 +724,7 @@
                 </div>
             </div>
             <div
-                class="tw-max-w-[1200px] tw-mx-auto tw-mt-12 tw-pt-8 tw-border-t tw-border-white/5 tw-text-center tw-text-sm tw-text-gray-600">
+                class="tw-max-w-[1200px] tw-mx-auto tw-mt-12 tw-pt-8 tw-border-t tw-border-accent-line tw-text-center tw-text-sm tw-text-ink-muted">
                 © 2026 UPlate. All rights reserved.
             </div>
         </footer>
