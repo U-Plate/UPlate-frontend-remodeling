@@ -202,7 +202,7 @@ function toggleChoice(listName, value) {
 }
 
 function humanizeFirebaseError(code) {
-    return ({ 'auth/account-exists-with-different-credential': 'An account already exists with a different sign-in method.', 'auth/popup-closed-by-user': 'Sign-in was cancelled.', 'auth/popup-blocked': 'Your browser blocked the sign-in window. Please allow popups and try again.', 'auth/operation-not-allowed': 'Apple Sign In has not been enabled for the UPlate Firebase project.', 'auth/unauthorized-domain': 'Apple Sign In is not authorized for this domain yet.', 'auth/configuration-not-found': 'Apple Sign In still needs its Firebase web configuration.' }[code] || 'We couldn’t sign you in. Please try again.')
+    return ({ 'auth/account-exists-with-different-credential': 'An account already exists with a different sign-in method.', 'auth/popup-closed-by-user': 'Sign-in was cancelled.', 'auth/popup-blocked': 'Your browser blocked the sign-in window. Please allow popups and try again.', 'auth/operation-not-allowed': 'Apple web sign-in needs its Service ID and Apple key configured in Firebase Authentication.', 'auth/unauthorized-domain': 'Apple Sign In is not authorized for this domain yet.', 'auth/configuration-not-found': 'Apple Sign In still needs its Firebase web configuration.' }[code] || 'We couldn’t sign you in. Please try again.')
 }
 
 function saveCompletedOnboarding(user) {
