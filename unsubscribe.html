@@ -30,8 +30,7 @@
             --accent-line: rgba(148, 176, 218, 0.32);
             --ink: #14213d;
             --ink-soft: #3b4a6b;
-            --ink-muted: #526181;
-            --deep-navy: #3a4c7e;
+            --ink-muted: #6f7e9c;
             --danger: #c0392b;
             --success: #2f855a;
             --shadow-sm: 0 1px 2px rgba(20, 33, 61, 0.06);
@@ -152,7 +151,7 @@
             padding: 6px 12px;
             border-radius: 999px;
             background: var(--accent-soft);
-            color: var(--deep-navy);
+            color: var(--accent-strong);
             font-size: 11px;
             font-weight: 700;
             letter-spacing: 0.14em;
@@ -234,7 +233,7 @@
             margin-top: 4px;
             padding: 0 18px;
             border: none;
-            border-radius: 999px;
+            border-radius: var(--radius-md);
             background: var(--ink);
             color: #ffffff;
             font-family: var(--font-sans);
@@ -325,7 +324,7 @@
             transition: color 0.18s ease;
         }
 
-        .card-footer a:hover { color: var(--deep-navy); }
+        .card-footer a:hover { color: var(--accent-strong); }
 
         @media (min-width: 680px) {
             body { padding: 56px 24px; }
