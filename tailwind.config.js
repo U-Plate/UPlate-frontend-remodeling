@@ -30,11 +30,10 @@ module.exports = {
 				success: '#2F855A',
 			},
 			fontFamily: {
-				display: ['Fraunces', 'Georgia', 'serif'],
+				display: ['Inter', 'ui-sans-serif', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
 				sans: ['Inter', 'ui-sans-serif', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
 			},
 		},
 	},
 	plugins: [],
 }
-

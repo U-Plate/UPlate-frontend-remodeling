@@ -19,13 +19,13 @@ colors:
   success: "#2F855A"
 typography:
   display:
-    fontFamily: "Fraunces, Georgia, 'Times New Roman', serif"
+    fontFamily: "Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, sans-serif"
     fontSize: "clamp(2.5rem, 6vw, 3.75rem)"
     fontWeight: 600
     lineHeight: 1.08
     letterSpacing: "-0.02em"
   title:
-    fontFamily: "Fraunces, Georgia, serif"
+    fontFamily: "Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, sans-serif"
     fontSize: "clamp(1.5rem, 3vw, 2rem)"
     fontWeight: 600
     lineHeight: 1.15
@@ -95,13 +95,13 @@ components:
 
 UPlate's new visual language trades the old black-glass-and-violet-gradient look for something that reads like an early morning walk to the dining hall: pale sky-blue gradients, soft white cards, and a single confident navy that carries every interactive and data moment. It's light where the old site was dark, warm where it was clinical, and built from one blue hue family instead of a decorative multi-stop gradient.
 
-This isn't a hypothetical direction: `unsubscribe.html` already ships it in production, pairing a **Fraunces display serif** with **Inter body text** over exactly this pale-sky-to-white gradient. That page is the ground truth for this system, ahead of the inferred app-mockup sampling — treat its tokens as canonical and bring the rest of the site (landing page, about page) up to match it, not the other way around.
+This isn't a hypothetical direction: `unsubscribe.html` already ships it in production, using **Inter** across the interface over exactly this pale-sky-to-white gradient. That page is the ground truth for this system, ahead of the inferred app-mockup sampling — treat its tokens as canonical and bring the rest of the site (landing page, about page) up to match it, not the other way around.
 
 This system explicitly rejects the dark-mode-plus-glassmorphism-plus-violet-gradient template the old landing page uses. No frosted blur, no gradient text, no generic AI-SaaS chrome. Depth comes from soft tonal layering and real shadow (see Elevation), not `backdrop-filter`.
 
 **Key Characteristics:**
 - Light, airy, sky-blue-to-white radial gradients as the default canvas, not black
-- A serif display face (Fraunces) paired with Inter body text — warmth and editorial confidence instead of an all-sans tech-SaaS voice
+- Inter used across display and body text, with weight and scale creating hierarchy instead of a second typeface
 - One blue-navy hue family spans every neutral and every accent — background, button, and text are all tinted from the same source
 - Two deliberate breaks from the blue system — green and amber — reserved exclusively for macro data (protein/fat), never used decoratively
 - Squircle icon badges as a signature anchor motif, replacing generic icon-circle clichés
@@ -139,7 +139,7 @@ The palette is a single tinted-blue ramp, from near-white through pale sky to de
 
 ## 3. Typography
 
-**Display Font:** Fraunces (with Georgia, Times New Roman serif fallback)
+**Display Font:** Inter (with ui-sans-serif and system fallbacks)
 **Body Font:** Inter (with ui-sans-serif, -apple-system fallback)
 
 **Character:** A warm editorial serif for anything that needs to feel like a headline or a moment, set against a clean, quiet sans for everything functional. This is already live on `unsubscribe.html`; the rest of the site should sound like the same voice, not a different product.
@@ -151,7 +151,7 @@ The palette is a single tinted-blue ramp, from near-white through pale sky to de
 - **Label** (600, 0.8125rem, 1.3 line-height, 0.02em tracking, uppercase where used as an eyebrow): button text, chip labels, small kicker text.
 
 ### Named Rules
-**The Solid Headline Rule.** Display and title text is always a solid Ink Navy fill. No `background-clip: text` gradients — emphasis comes from the serif's natural contrast and size, not decoration.
+**The Solid Headline Rule.** Display and title text is always a solid Ink Navy fill. No `background-clip: text` gradients — emphasis comes from weight and size, not decoration.
 
 ## 4. Elevation
 
@@ -200,7 +200,7 @@ A thick Deep Navy ring on a white circular card displaying one large number (e.g
 ## 6. Do's and Don'ts
 
 ### Do:
-- **Do** pair Fraunces (display) with Inter (body) everywhere — it's already shipping on `unsubscribe.html`; the rest of the site should match, not diverge.
+- **Do** use Inter consistently across every surface, with weight and scale establishing hierarchy.
 - **Do** build every background from the Pale Sky → white gradient family (#DCEDFF into #FFFFFF), not black.
 - **Do** use Ink Navy (#14213D) as the strongest primary, Deep Navy (#3A4C7E) for hover/secondary-bold moments, Slate Indigo (#4E6088) for icon badges and lighter interactive fills.
 - **Do** use the squircle icon badge as the recurring anchor motif in feature/how-it-works sections.
