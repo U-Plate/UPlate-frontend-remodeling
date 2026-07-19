@@ -48,6 +48,9 @@
 
 html {
     scroll-behavior: smooth;
+    /* Keeps #features / #pro / #faq headings clear of the fixed 72px header
+       when the nav anchors jump. */
+    scroll-padding-top: 88px;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -63,12 +66,10 @@ a {
 }
 
 /* ============ LOGO BADGE ============ */
-/* logo.png is a white mark on a transparent background, drawn for a dark canvas.
-   Give it a navy squircle so it reads on the new light surfaces, matching the
-   icon-badge motif instead of vanishing into the page. */
+/* plate_dark.png is a dark mark on a transparent background, so it reads
+   directly on the light surfaces without needing a colored backdrop. */
 .logo-badge {
-    background: var(--ink);
-    border-radius: var(--radius-sm);
+    background: transparent;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -76,8 +77,8 @@ a {
 }
 
 .logo-badge img {
-    width: 60%;
-    height: 60%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
 }
 
@@ -110,6 +111,7 @@ a {
     left: 0;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     background: var(--bg-grad);
     display: flex;
     flex-direction: column;
@@ -196,6 +198,7 @@ a {
     left: 0;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     z-index: 10000;
     display: flex;
     align-items: center;
@@ -339,8 +342,14 @@ header > .collapsible-header {
     border: none;
 }
 
-.nav-download-btn:hover {
+.nav-download-btn:hover,
+.nav-download-btn:active {
     background: var(--deep-navy);
+}
+
+.header-links:active {
+    color: var(--ink);
+    background: var(--surface-sunken);
 }
 
 /* ============ BUTTONS ============ */
@@ -367,6 +376,12 @@ header > .collapsible-header {
     box-shadow: var(--shadow-md);
 }
 
+.primary-btn:active {
+    background: var(--deep-navy);
+    transform: scale(0.97);
+    box-shadow: var(--shadow-sm);
+}
+
 .secondary-btn {
     padding: 15px 30px;
     border-radius: var(--radius-pill);
@@ -389,6 +404,12 @@ header > .collapsible-header {
     border-color: var(--powder-blue);
 }
 
+.secondary-btn:active {
+    background: var(--surface-sunken);
+    border-color: var(--powder-blue);
+    transform: scale(0.97);
+}
+
 /* Variant for use on a navy surface (CTA card) */
 .on-navy .secondary-btn {
     background: transparent;
@@ -401,6 +422,11 @@ header > .collapsible-header {
     border-color: rgba(255, 255, 255, 0.6);
 }
 
+.on-navy .secondary-btn:active {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
 .on-navy .primary-btn {
     background: #fff;
     color: var(--ink);
@@ -408,6 +434,15 @@ header > .collapsible-header {
 
 .on-navy .primary-btn:hover {
     background: var(--surface-soft);
+}
+
+.on-navy .primary-btn:active {
+    background: var(--surface-soft);
+}
+
+.on-navy .eyebrow {
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
 }
 
 /* ============ UNIVERSITY SEARCH & INPUTS ============ */
@@ -529,6 +564,14 @@ header > .collapsible-header {
 }
 
 /* ============ HERO ============ */
+/* Overrides the tw-min-h-[100vh] utility: 100vh is measured against the
+   largest possible viewport on mobile Safari, so content sits partly behind
+   the collapsing address/toolbar chrome on first paint. 100dvh tracks the
+   actual visible area instead. */
+#hero-section {
+    min-height: 100dvh;
+}
+
 .hero-title {
     font-family: var(--font-display);
     color: var(--ink);
@@ -573,74 +616,18 @@ header > .collapsible-header {
     font-size: 18px;
 }
 
-/* ============ STAT RING (signature component) ============ */
-.stat-ring-card {
-    background: var(--surface);
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-md);
-    padding: 32px;
-}
-
-.stat-ring {
-    width: 168px;
-    height: 168px;
-    border-radius: 50%;
-    border: 10px solid var(--deep-navy);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+/* ============ PHONE SHOT ============ */
+/* A raw app screenshot presented as a phone: natural 1206x2622 ratio, never
+   cropped into a box. Use this instead of forcing a screenshot through an
+   aspect-ratio + object-fit: cover wrapper, which squares it off. */
+.phone-shot {
+    display: block;
+    width: 100%;
+    height: auto;
     margin: 0 auto;
-    background: var(--surface);
+    border-radius: 32px;
+    box-shadow: var(--shadow-lg);
 }
-
-.stat-ring .stat-number {
-    font-family: var(--font-display);
-    font-size: 2.25rem;
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1;
-}
-
-.stat-ring .stat-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-    margin-top: 4px;
-}
-
-.macro-row {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    margin-top: 24px;
-}
-
-.macro-chip {
-    background: var(--surface-soft);
-    border: 1px solid var(--accent-line);
-    border-radius: var(--radius-md);
-    padding: 10px 18px;
-    text-align: center;
-}
-
-.macro-chip .macro-value {
-    font-weight: 700;
-    font-size: 1.05rem;
-    color: var(--ink);
-}
-
-.macro-chip .macro-label {
-    font-size: 11px;
-    font-weight: 600;
-    margin-top: 2px;
-}
-
-.macro-chip.protein .macro-label { color: var(--macro-green); }
-.macro-chip.fat .macro-label { color: var(--macro-amber); }
-.macro-chip.carbs .macro-label { color: var(--deep-navy); }
 
 /* ============ FEATURE STORY CARDS ============ */
 .feature-card {
@@ -668,6 +655,12 @@ header > .collapsible-header {
         max-width: 400px;
         height: 260px;
     }
+}
+
+/* Per-card screenshot: mobile pairs each feature with its own image inline
+   (see the mobile override block). Desktop uses the 3D carousel instead. */
+.feature-card-thumb {
+    display: none;
 }
 
 .feature-item {
@@ -702,9 +695,11 @@ header > .collapsible-header {
     justify-content: center;
 }
 
+/* 317x690 matches the 1206x2622 source screenshots (ratio 0.460), so
+   object-fit: cover lands exactly with no crop. */
 .phone-carousel {
     position: relative;
-    width: 340px;
+    width: 317px;
     height: 690px;
     transform-style: preserve-3d;
     transition: transform 0.7s var(--ease-out-expo);
@@ -712,7 +707,7 @@ header > .collapsible-header {
 
 .phone-carousel-item {
     position: absolute;
-    width: 340px;
+    width: 317px;
     height: 690px;
     backface-visibility: hidden;
     transition: all 0.7s var(--ease-out-expo);
@@ -768,14 +763,105 @@ header > .collapsible-header {
 
 @media (max-width: 1024px) {
     .phone-carousel {
-        width: 190px;
+        width: 178px;
         height: 386px;
     }
 
     .phone-carousel-item {
-        width: 190px;
+        width: 178px;
         height: 386px;
         border-radius: 22px;
+    }
+}
+
+/* ============ MOBILE FEATURE STORY (no scroll-jack below 1024px) ============ */
+/* A 300vh pinned-and-scrubbed pin reads fine under a mouse wheel but fights
+   touch-momentum scrolling — the progress math runs on every native scroll
+   event, so it stutters through iOS/Android's inertial deceleration and the
+   4 pinned states blow past 3 phone-screens' worth of dead scroll distance.
+   Below the desktop breakpoint we drop the pin for a normal static list and
+   swap the 3D carousel for a native horizontal swipe strip instead — imagery
+   stays, the interaction becomes thumb-native. */
+@media (max-width: 1023px) {
+    #features {
+        min-height: auto;
+    }
+
+    #features-scroll-container {
+        height: auto;
+    }
+
+    #features-scroll-container .tw-sticky {
+        position: static;
+        height: auto;
+        display: block;
+    }
+
+    /* Hide the whole column, not just the wrapper — an emptied-but-present
+       flex child still contributes the parent's 32px gap. */
+    .phone-carousel-col {
+        display: none;
+    }
+
+    .feature-slides-container {
+        position: static;
+        /* Must clear the base `display: flex` too — otherwise the now-static
+           feature items become flex ROW children and overflow off both edges. */
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .feature-item {
+        position: static;
+        opacity: 1;
+        filter: none;
+        transform: none;
+        pointer-events: auto;
+    }
+
+    .feature-item:not(:last-child) {
+        margin-bottom: 14px;
+    }
+
+    /* Screenshot sits beside its own copy, so the feature it illustrates is
+       unambiguous and nothing scrolls sideways. */
+    .feature-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .feature-card-thumb {
+        display: block;
+        flex: 0 0 auto;
+        width: 92px;
+        /* Crop to the top of the screen: that's where each screen's title sits,
+           which is the part that identifies it at thumbnail size. */
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        object-position: top center;
+        border-radius: 14px;
+        box-shadow: var(--shadow-md);
+    }
+
+    /* The screenshot already carries the visual weight at this size; the icon
+       badge alongside it is redundant and crowds the copy. */
+    .feature-card .icon-badge {
+        display: none;
+    }
+
+    .feature-card h3 {
+        font-size: 1.125rem;
+        line-height: 1.25;
+        margin-bottom: 6px;
+    }
+
+    .feature-card p {
+        font-size: 0.9375rem;
+        line-height: 1.5;
     }
 }
 
@@ -912,7 +998,8 @@ header > .collapsible-header {
     transition: background 0.2s ease;
 }
 
-.faq-accordion:hover {
+.faq-accordion:hover,
+.faq-accordion:active {
     background: var(--surface-soft);
 }
 
@@ -941,14 +1028,201 @@ header > .collapsible-header {
     color: #fff;
 }
 
+/* ============ PILLAR STRIP (three core messages) ============ */
+.pillar-strip {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pillar-item {
+    flex: 1;
+    padding: 0 32px;
+    border-left: 1px solid var(--accent-line);
+}
+
+.pillar-item:first-child {
+    padding-left: 0;
+    border-left: none;
+}
+
+.pillar-item:last-child {
+    padding-right: 0;
+}
+
+.pillar-index {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--accent-strong);
+}
+
+.pillar-item h3 {
+    font-family: var(--font-display);
+    color: var(--ink);
+}
+
+@media (max-width: 900px) {
+    .pillar-strip {
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .pillar-item {
+        padding: 0;
+        border-left: none;
+        padding-top: 28px;
+        border-top: 1px solid var(--accent-line);
+    }
+
+    .pillar-item:first-child {
+        padding-top: 0;
+        border-top: none;
+    }
+}
+
+/* ============ TESTIMONIALS ============ */
+.testimonial-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 28px;
+    transition: box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.testimonial-quote-mark {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--powder-blue);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.testimonial-text {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    line-height: 1.4;
+    color: var(--ink);
+}
+
+.testimonial-role {
+    margin-top: 16px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+}
+
+/* ============ FOOD CHIPS ("Beyond the Dining Hall") ============ */
+.food-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: var(--radius-pill);
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--accent-line);
+    font-weight: 500;
+    font-size: 0.9375rem;
+    box-shadow: var(--shadow-sm);
+    transition: background-color 0.2s ease, transform 0.2s var(--ease-out-expo);
+}
+
+.food-chip i {
+    color: var(--slate-indigo);
+}
+
+.food-chip:active {
+    background: var(--surface-sunken);
+    transform: scale(0.96);
+}
+
+/* ============ UPLATE PRO ============ */
+.pro-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.pro-price {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1;
+}
+
+.pro-price-period {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+}
+
+.pro-feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    color: rgba(255, 255, 255, 0.92);
+    font-weight: 500;
+}
+
+.pro-feature-list li:last-child {
+    border-bottom: none;
+}
+
+.pro-feature-list .check-dot {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.pro-phone-frame {
+    border-radius: 36px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.pro-phone-frame img {
+    width: 100%;
+    display: block;
+}
+
 /* ============ FOOTER ============ */
 .footer-link {
     color: var(--ink-muted);
     transition: color 0.25s ease;
 }
 
-.footer-link:hover {
+.footer-link:hover,
+.footer-link:active {
     color: var(--ink);
+}
+
+@media (max-width: 767px) {
+    /* Text links stacked with a 12px gap sit under the 44px touch-target
+       guideline; pad each one out so adjacent links don't mis-tap. */
+    .footer-link {
+        display: inline-block;
+        padding: 6px 0;
+    }
 }
 
 /* ============ RESPONSIVE HEADER ============ */
@@ -1115,12 +1389,15 @@ header > .collapsible-header {
         gap: 24px;
     }
 
-    #phone-carousel-wrapper {
+    .phone-carousel-col {
         display: none;
     }
 
     .feature-slides-container {
         position: static;
+        /* Clears the base `display: flex`; without this the static feature
+           items lay out as a flex row and overflow the viewport. */
+        display: block;
         width: 100%;
         height: auto;
         max-width: 640px;
@@ -1134,6 +1411,29 @@ header > .collapsible-header {
         pointer-events: auto !important;
         margin-bottom: 20px;
         transition: none !important;
+    }
+
+    /* The carousel is the only imagery in this section, and it's hidden here,
+       so pair each card with its own screenshot instead of going text-only. */
+    .feature-card {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .feature-card-thumb {
+        display: block;
+        flex: 0 0 auto;
+        width: 110px;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        object-position: top center;
+        border-radius: 14px;
+        box-shadow: var(--shadow-md);
+    }
+
+    .feature-card .icon-badge {
+        display: none;
     }
 
     #dashboard {
@@ -1150,4 +1450,290 @@ header > .collapsible-header {
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
     }
+}
+
+/* ============ PARTNER PAGE (restaurants.html) ============ */
+/* index.html paints the sky gradient on #main-site, which only exists there.
+   Standalone pages opt into the same canvas on <body> instead. */
+.page-canvas {
+    background: var(--bg-grad);
+    background-attachment: fixed;
+}
+
+/* --- Targeting card: a single saved campaign at a glance, not a replica of
+   the ad editor. Label / value / weight per row, stacking on narrow screens. --- */
+.targeting-card {
+    background: var(--surface);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    padding: 30px 34px;
+}
+
+@media (max-width: 640px) {
+    .targeting-card {
+        padding: 22px;
+    }
+}
+
+.tg-card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--accent-line);
+}
+
+.tg-card-title {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.tg-card-tag {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+}
+
+.tg-line {
+    display: grid;
+    grid-template-columns: 132px 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--accent-line);
+}
+
+.tg-line:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.tg-line-label {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+}
+
+.tg-line-value {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink);
+    font-weight: 500;
+}
+
+/* The weighting mechanic, reduced to one badge per row. */
+.tg-weight {
+    padding: 5px 12px;
+    border-radius: var(--radius-pill);
+    background: var(--slate-indigo);
+    color: #fff;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.tg-weight.is-strict {
+    background: #8C3B2A;
+}
+
+/* Below 640px the three columns become label-above-value, with the weight
+   badge riding up next to the label so it never orphans on its own row. */
+@media (max-width: 640px) {
+    .tg-line {
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 8px 12px;
+        padding: 14px 0;
+    }
+
+    .tg-line-label {
+        grid-area: 1 / 1;
+    }
+
+    .tg-weight {
+        grid-area: 1 / 2;
+        justify-self: end;
+    }
+
+    .tg-line-value {
+        grid-area: 2 / 1 / 3 / -1;
+    }
+}
+
+.tg-chip-exclude {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    background: #FBEAE5;
+    color: #8C3B2A;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+.tg-card-foot {
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px solid var(--accent-line);
+    color: var(--ink-soft);
+    font-size: 0.9375rem;
+}
+
+/* --- Contrast ledger: the one navy moment on the page. --- */
+.ledger {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+}
+
+.ledger-col:last-child {
+    border-left: 1px solid rgba(255, 255, 255, 0.18);
+    padding-left: 44px;
+}
+
+.ledger-col:first-child {
+    padding-right: 44px;
+}
+
+.ledger-heading {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.ledger-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 1.0625rem;
+}
+
+.ledger-list li:last-child {
+    border-bottom: none;
+}
+
+@media (max-width: 768px) {
+    .ledger {
+        grid-template-columns: 1fr;
+    }
+
+    .ledger-col:first-child {
+        padding-right: 0;
+        padding-bottom: 28px;
+    }
+
+    .ledger-col:last-child {
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+        padding-left: 0;
+        padding-top: 28px;
+    }
+}
+
+/* --- Insight ledger: ruled rows, deliberately not a card grid. --- */
+.insight-row {
+    display: flex;
+    gap: 18px;
+    align-items: baseline;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--accent-line);
+}
+
+.insight-row:last-child {
+    border-bottom: none;
+}
+
+.insight-index {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--accent-strong);
+    min-width: 26px;
+}
+
+.insight-row p {
+    color: var(--ink);
+    font-weight: 500;
+}
+
+/* --- Partner inquiry form --- */
+.field-label {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--ink-soft);
+    margin-bottom: 7px;
+}
+
+.field-input {
+    width: 100%;
+    padding: 13px 16px;
+    border-radius: var(--radius-md);
+    background: var(--surface-soft);
+    border: 1px solid var(--accent-line);
+    box-shadow: var(--shadow-sm);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    outline: none;
+    transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field-input::placeholder {
+    color: var(--ink-muted);
+}
+
+.field-input:hover {
+    background: var(--surface);
+    border-color: var(--powder-blue);
+}
+
+.field-input:focus-visible {
+    background: var(--surface);
+    border-color: var(--accent-strong);
+    box-shadow: 0 0 0 3px rgba(111, 146, 197, 0.28);
+}
+
+textarea.field-input {
+    resize: vertical;
+    min-height: 108px;
+}
+
+.primary-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Off-screen but reachable by screen readers — used for the honeypot label. */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Anchored sections clear the 72px fixed header when jumped to. */
+#insights,
+#inquire {
+    scroll-margin-top: 96px;
 }
