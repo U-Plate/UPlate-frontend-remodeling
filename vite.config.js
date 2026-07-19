@@ -1,8 +1,56 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
 
+const cleanRouteFiles = {
+  'restaurants.html': 'Restaurants/index.html',
+  'coaches.html': 'Coaches/index.html'
+}
+
+function cleanRoutes() {
+  const rewriteRequest = (request) => {
+    const [pathname, search = ''] = request.url.split('?')
+    const routeFile = {
+      '/Restaurants/': '/restaurants.html',
+      '/Coaches/': '/coaches.html'
+    }[pathname]
+
+    if (routeFile) request.url = `${routeFile}${search ? `?${search}` : ''}`
+  }
+
+  return {
+    name: 'clean-routes',
+    enforce: 'post',
+    generateBundle: {
+      order: 'post',
+      handler(_, bundle) {
+        for (const [from, to] of Object.entries(cleanRouteFiles)) {
+          const page = bundle[from]
+          if (!page) continue
+
+          delete bundle[from]
+          page.fileName = to
+          bundle[to] = page
+        }
+      }
+    },
+    configureServer(server) {
+      server.middlewares.use((request, _, next) => {
+        rewriteRequest(request)
+        next()
+      })
+    },
+    configurePreviewServer(server) {
+      server.middlewares.use((request, _, next) => {
+        rewriteRequest(request)
+        next()
+      })
+    }
+  }
+}
+
 export default defineConfig({
   base: '/',
+  plugins: [cleanRoutes()],
   build: {
     outDir: 'dist',
     assetsDir: 'assets',

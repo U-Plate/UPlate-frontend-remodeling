@@ -1734,6 +1734,7 @@ textarea.field-input {
 
 /* Anchored sections clear the 72px fixed header when jumped to. */
 #insights,
+#restaurant-dashboard,
 #inquire {
     scroll-margin-top: 96px;
 }
