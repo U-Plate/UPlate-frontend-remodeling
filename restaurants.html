@@ -392,7 +392,7 @@
 
         <!-- INQUIRY -->
         <section id="inquire" class="tw-flex tw-w-full tw-flex-col tw-items-center tw-px-4 sm:tw-px-[5%] lg:tw-px-[8%] tw-pb-32 tw-pt-4">
-            <div
+            <div data-scroll-center
                 class="tw-w-full tw-max-w-[760px] tw-rounded-[28px] tw-bg-white tw-p-12 max-md:tw-p-7 tw-shadow-[0_40px_80px_-40px_rgba(31,61,110,0.45)]">
                 <h2 class="display-text tw-text-[clamp(1.75rem,3.2vw,2.25rem)] tw-leading-tight">
                     Tell us about your restaurant.
@@ -420,7 +420,7 @@
                                 autocomplete="email" placeholder="you@restaurant.com" />
                         </div>
                         <div>
-                            <label class="field-label" for="pf-city">City or campus</label>
+                            <label class="field-label" for="pf-city">City</label>
                             <input class="field-input" id="pf-city" name="city" type="text" required
                                 autocomplete="address-level2" placeholder="West Lafayette, IN" />
                         </div>
@@ -480,6 +480,7 @@
                     <div class="tw-flex tw-flex-col tw-gap-3 tw-text-sm">
                         <a href="about.html" class="footer-link">About</a>
                         <a href="restaurants.html" class="footer-link">For Restaurants</a>
+                        <a href="coaches.html" class="footer-link">For Coaches</a>
                         <a href="mailto:contact@u-plate.com" class="footer-link">Contact</a>
                     </div>
                 </div>
@@ -494,7 +495,7 @@
     <script type="module" src="./index.js"></script>
 
     <script type="module">
-        const INQUIRY_API = 'https://boilerbites.com/restaurants/inquiry'
+        const INQUIRY_API = 'http://localhost:8787/landing/restaurantInquiry'
 
         const form = document.getElementById('partner-form')
         const submitBtn = document.getElementById('pf-submit')
@@ -521,11 +522,11 @@
             }
 
             const payload = {
-                restaurant: form.restaurant.value.trim(),
-                contactName: form.contactName.value.trim(),
-                email: form.email.value.trim(),
+                restaurantName: form.restaurant.value.trim(),
+                name: form.contactName.value.trim(),
+                restaurantEmail: form.email.value.trim(),
                 city: form.city.value.trim(),
-                message: form.message.value.trim(),
+                info: form.message.value.trim(),
                 source: window.location.href,
             }
 
@@ -543,7 +544,7 @@
                 if (!res.ok) throw new Error('Request failed with status ' + res.status)
 
                 form.reset()
-                setStatus('Got it. We will email you at ' + payload.email + ' within a few days.', 'tw-text-success')
+                setStatus('Got it. We will email you at ' + payload.restaurantEmail + ' within a few days.', 'tw-text-success')
                 submitBtn.textContent = 'Sent'
             } catch (err) {
                 console.error('Partner inquiry failed:', err)

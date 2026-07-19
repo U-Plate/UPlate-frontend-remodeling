@@ -11,6 +11,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         about: resolve(__dirname, 'about.html'),
         restaurants: resolve(__dirname, 'restaurants.html'),
+        coaches: resolve(__dirname, 'coaches.html'),
         unsubscribe: resolve(__dirname, 'unsubscribe.html'),
         onboarding: resolve(__dirname, 'onboarding.html')
       }

@@ -315,6 +315,75 @@ function init() {
         })
     })
 
+    /* ============ CENTERED ANCHOR SCROLL ============
+     * A plain anchor jump aligns the target's TOP to the viewport, which
+     * leaves short targets (the contact/pilot forms) stranded at the top of
+     * the screen. Any element marked [data-scroll-center] gets centered in
+     * the space below the fixed header instead. Sections without the
+     * attribute keep normal browser behaviour, so long anchors like
+     * #features still top-align.
+     */
+    const HEADER_H = 72
+    const MIN_GAP = 20
+
+    function centerOnScreen(el) {
+        const rect = el.getBoundingClientRect()
+        const elTop = rect.top + window.scrollY
+        const viewH = window.innerHeight
+        const availH = viewH - HEADER_H
+        let top
+
+        if (rect.height + MIN_GAP * 2 <= availH) {
+            top = elTop - HEADER_H - (availH - rect.height) / 2
+        } else {
+            // Taller than the space available: centering would cut off its
+            // heading, so pin the top just under the header.
+            top = elTop - HEADER_H - MIN_GAP
+        }
+
+        const maxScroll = document.documentElement.scrollHeight - viewH
+        window.scrollTo({
+            top: Math.max(0, Math.min(top, maxScroll)),
+            behavior: prefersReducedMotion ? "auto" : "smooth",
+        })
+    }
+
+    function centerTargetFor(hash) {
+        if (!hash || hash === "#") return null
+        let section
+        try {
+            section = document.querySelector(hash)
+        } catch {
+            return null
+        }
+        if (!section) return null
+        return section.matches("[data-scroll-center]")
+            ? section
+            : section.querySelector("[data-scroll-center]")
+    }
+
+    document.addEventListener("click", (e) => {
+        const link = e.target.closest && e.target.closest('a[href^="#"]')
+        if (!link) return
+
+        const hash = link.getAttribute("href")
+        const focus = centerTargetFor(hash)
+        if (!focus) return
+
+        e.preventDefault()
+        centerOnScreen(focus)
+        history.pushState(null, "", hash)
+    })
+
+    // Same treatment when the page is opened directly on the hash.
+    if (window.location.hash) {
+        const focus = centerTargetFor(window.location.hash)
+        if (focus) {
+            // Wait for fonts/images so the measured height is the final one.
+            window.setTimeout(() => centerOnScreen(focus), 120)
+        }
+    }
+
 
     // Header
     const headerTitle = document.getElementById("header-title")
@@ -549,6 +618,11 @@ function init() {
     const waitlistUniName = document.getElementById('waitlist-uni-name')
     const waitlistEmail = document.getElementById('waitlist-email')
     const waitlistSuccess = document.getElementById('waitlist-success')
+
+    // The university search and waitlist only exist on the home page. Without
+    // this guard the next line throws on about/restaurants/coaches, aborting
+    // the rest of init() and logging an uncaught TypeError on every load.
+    if (!uniSearchInput) return
 
     uniSearchInput.addEventListener('click', function () {
         haptics.trigger(defaultPatterns.light)

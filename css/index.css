@@ -1737,3 +1737,654 @@ textarea.field-input {
 #inquire {
     scroll-margin-top: 96px;
 }
+
+/* ============================================================
+   COACHES PAGE
+   The roster mockup mirrors the real Sports Dashboard at
+   sports.u-plate.com: same four statuses, same severity sort
+   (off-track first), same OKLCH status tokens. Keep them in
+   sync with the dashboard's own stylesheet if it changes.
+   ============================================================ */
+
+:root {
+    --status-on-track: oklch(55% 0.13 145);
+    --status-on-track-tint: oklch(94% 0.045 145);
+    --status-attention: oklch(55% 0.14 65);
+    --status-attention-tint: oklch(94% 0.035 65);
+    --status-off-track: oklch(52% 0.13 35);
+    --status-off-track-tint: oklch(94% 0.04 35);
+    --status-quiet: oklch(46% 0.01 250);
+    --status-quiet-tint: oklch(92% 0.006 250);
+}
+
+/* --- Roster mockup: the page's signature moment. --- */
+.roster-panel {
+    background: var(--surface);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    padding: 26px 28px 12px;
+    width: 100%;
+}
+
+.roster-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--accent-line);
+}
+
+.roster-team {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.roster-count {
+    font-size: 0.8125rem;
+    color: var(--ink-muted);
+    white-space: nowrap;
+}
+
+.roster-sortnote {
+    display: block;
+    padding: 14px 0 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+}
+
+.roster-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--accent-line);
+}
+
+.roster-row:last-of-type {
+    border-bottom: none;
+}
+
+.roster-dot {
+    width: 9px;
+    height: 9px;
+    min-width: 9px;
+    border-radius: var(--radius-pill);
+}
+
+.roster-main {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+    flex: 1;
+}
+
+.roster-name {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--ink);
+}
+
+.roster-reason {
+    font-size: 0.8125rem;
+    color: var(--ink-muted);
+}
+
+/* Status is never encoded by the dot alone — every row carries a
+   text label, so the roster reads without color vision. */
+.roster-status {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 5px 11px;
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+}
+
+.is-off-track .roster-dot { background: var(--status-off-track); }
+.is-off-track .roster-status {
+    background: var(--status-off-track-tint);
+    color: var(--status-off-track);
+}
+
+.is-attention .roster-dot { background: var(--status-attention); }
+.is-attention .roster-status {
+    background: var(--status-attention-tint);
+    color: var(--status-attention);
+}
+
+.is-not-logging .roster-dot { background: var(--status-quiet); }
+.is-not-logging .roster-status {
+    background: var(--status-quiet-tint);
+    color: var(--status-quiet);
+}
+
+.is-on-track .roster-dot { background: var(--status-on-track); }
+.is-on-track .roster-status {
+    background: var(--status-on-track-tint);
+    color: var(--status-on-track);
+}
+
+@media (max-width: 560px) {
+    .roster-panel {
+        padding: 20px 18px 8px;
+    }
+
+    .roster-row {
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+
+    .roster-status {
+        margin-left: 23px;
+    }
+}
+
+/* --- Lane rail: four logging routes, drawn as a track. --- */
+.lane-rail {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+/* The connecting line sits behind the nodes and stops short of
+   the outer edges so it reads as a lane, not a full-bleed rule. */
+.lane-rail::before {
+    content: "";
+    position: absolute;
+    top: 27px;
+    left: 12%;
+    right: 12%;
+    height: 1px;
+    background: var(--accent-line);
+}
+
+.lane-node {
+    position: relative;
+    text-align: center;
+}
+
+.lane-mark {
+    position: relative;
+    z-index: 1;
+    width: 54px;
+    height: 54px;
+    margin: 0 auto 18px;
+    border-radius: var(--radius-pill);
+    background: var(--ink);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.lane-node h3 {
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    color: var(--ink);
+}
+
+.lane-node p {
+    margin-top: 7px;
+    font-size: 0.9375rem;
+    color: var(--ink-soft);
+}
+
+@media (max-width: 760px) {
+    .lane-rail {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 36px 24px;
+    }
+
+    .lane-rail::before {
+        display: none;
+    }
+}
+
+@media (max-width: 380px) {
+    .lane-rail {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Reason grid: ruled two-column list, deliberately not cards. --- */
+.reason-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 56px;
+    width: 100%;
+}
+
+.reason-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--accent-line);
+}
+
+.reason-item i {
+    color: var(--accent-strong);
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+.reason-item p {
+    color: var(--ink);
+    font-weight: 500;
+}
+
+@media (max-width: 720px) {
+    .reason-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .reason-item:last-child {
+        border-bottom: none;
+    }
+}
+
+/* --- Pro: copy on the left, the included list on the right, so the
+       navy card carries weight across its full width. --- */
+.pro-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+    gap: 56px;
+    align-items: start;
+}
+
+.pro-line {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.pro-line:last-child {
+    border-bottom: none;
+}
+
+.pro-line span {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 900px) {
+    .pro-split {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
+/* --- Demo credential callout. --- */
+.demo-note {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px;
+    padding: 12px 18px;
+    border-radius: var(--radius-md);
+    background: var(--surface-sunken);
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+}
+
+.demo-note code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.8125rem;
+    color: var(--ink);
+    background: var(--surface);
+    padding: 2px 7px;
+    border-radius: 6px;
+    border: 1px solid var(--accent-line);
+}
+
+#roster,
+#pilot {
+    scroll-margin-top: 96px;
+}
+
+/* --- Mini dashboard panels. Hand-built rather than raw screenshots so
+       they stay legible at every width, use the landing palette instead of
+       the app's own greys, and sit quietly beside the copy. --- */
+.mini-panel {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--accent-line);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    padding: 24px 26px;
+}
+
+.mp-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--accent-line);
+}
+
+.mp-name {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.mp-reason {
+    display: block;
+    margin-top: 3px;
+    font-size: 0.8125rem;
+    color: var(--ink-muted);
+}
+
+.mp-label {
+    display: block;
+    margin: 18px 0 12px;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+}
+
+/* --- Macro rings. Uses the app's own ring palette so the panel matches
+       what a coach actually sees in UPlate. These four are the documented
+       exception to the one-blue-family rule: they are nutrition data, and
+       every ring is labelled with its name and value in the legend, so the
+       hue is never the only thing carrying the meaning. --- */
+:root {
+    --ring-calories: #FF2D55;
+    --ring-carbs: #32ADE6;
+    --ring-protein: #34C759;
+    --ring-fat: #FF9F0A;
+}
+
+.macro-wrap {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+.macro-rings {
+    width: 132px;
+    height: 132px;
+    flex-shrink: 0;
+}
+
+.ring-track,
+.ring {
+    fill: none;
+    stroke-width: 8;
+}
+
+.ring-track {
+    stroke: var(--surface-sunken);
+}
+
+.ring {
+    stroke-linecap: round;
+}
+
+.ring.is-cal { stroke: var(--ring-calories); }
+.ring.is-carb { stroke: var(--ring-carbs); }
+.ring.is-pro { stroke: var(--ring-protein); }
+.ring.is-fat { stroke: var(--ring-fat); }
+
+.macro-key {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin: 0;
+    min-width: 0;
+}
+
+.macro-key div {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.macro-key dt {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    width: 74px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+}
+
+.macro-key dd {
+    margin: 0;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.key-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.key-dot.is-cal { background: var(--ring-calories); }
+.key-dot.is-carb { background: var(--ring-carbs); }
+.key-dot.is-pro { background: var(--ring-protein); }
+.key-dot.is-fat { background: var(--ring-fat); }
+
+/* --- Meal log --- */
+.ml-tabs {
+    display: inline-flex;
+    gap: 2px;
+    padding: 3px;
+    border-radius: var(--radius-pill);
+    background: var(--surface-sunken);
+    margin-bottom: 16px;
+}
+
+.ml-tabs span {
+    padding: 5px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--ink-muted);
+}
+
+.ml-tabs span.is-active {
+    background: var(--deep-navy);
+    color: #fff;
+}
+
+.ml-meal {
+    padding: 14px 0;
+    border-top: 1px solid var(--accent-line);
+}
+
+.ml-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.ml-title {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--ink);
+}
+
+.ml-cal {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.ml-sub {
+    display: block;
+    margin-top: 3px;
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+}
+
+.ml-facts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 14px;
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    background: var(--surface-soft);
+}
+
+.ml-facts div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.ml-facts dt {
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+}
+
+.ml-facts dd {
+    margin: 0;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+}
+
+.ml-tag {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--accent-line);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+}
+
+@media (max-width: 420px) {
+    .ml-facts {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* --- Weight trend --- */
+.wt-top {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.wt-now {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.wt-togo {
+    font-size: 0.8125rem;
+    color: var(--ink-muted);
+}
+
+.wt-track {
+    position: relative;
+    height: 6px;
+    margin: 14px 0 8px;
+    border-radius: var(--radius-pill);
+    background: var(--surface-sunken);
+}
+
+.wt-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    border-radius: var(--radius-pill);
+    background: var(--powder-blue);
+}
+
+.wt-dot {
+    position: absolute;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    margin-top: -6px;
+    margin-left: -6px;
+    border-radius: 50%;
+    background: var(--deep-navy);
+}
+
+.wt-ends {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+}
+
+.wt-goal {
+    color: var(--macro-green);
+    font-weight: 600;
+}
+
+.wt-date {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.2;
+}
+
+.wt-date span {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--ink-muted);
+}
+
+.wt-note {
+    margin-top: 6px;
+    font-size: 0.8125rem;
+    color: var(--ink-muted);
+}
+
+.wt-spark {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 18px;
+    overflow: visible;
+}
+
+/* Standalone status chip (outside a .roster-row status context). */
+.roster-status.is-attention-chip {
+    background: var(--status-attention-tint);
+    color: var(--status-attention);
+}
